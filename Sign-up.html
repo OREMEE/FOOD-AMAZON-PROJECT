@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign-in Form</title>
+  <title>Signup Form</title>
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
 </head>
 <body>
-   <section class="container-fluid">
+
+  <section class="container-fluid">
 <div class="row">
       <!-- signup img starts -->
   <div class="col-lg-5 col-md-12 col-sm-12 p-0">
@@ -18,22 +20,23 @@
        <!-- Form starts -->
     <div class="col-lg-7 col-sm-12 col-md-12">
       <form action="#">
-<h2 class="" style="color: #00A859;font-family: roboto;">Login</h2>
+<h2 class="" style="color: #00A859;font-family: roboto;">Sign Up</h2>
  <p class="mt-3 font-400" style="color: #7C797A;">
-            Don't have an account yet? <a onclick="" style="color: #F58634;" href="./Sign-up.html">Sign Up</a>
+            Already have an account? <a onclick="" style="color: #F58634;" href="./index.html">Sign in</a>
           </p>
 <div class="input-form">
+  <input class="mb-3" type="text" name="name" placeholder="Your name" >
 <input class="mb-3" type="email" name="email" placeholder="Email Address">
+ <input placeholder="Phone Number" class="mb-3" type="tel" name="phone-number" >
   <input class="mb-3" type="password" name="password" placeholder="Password" >
    <!-- checkbox -->
       <div class="check-form" style="display: inline-flex;"> <input class="mb-3" type="checkbox"> 
-        <p class="mx-2" style="color:#7C797A;">Remember me</p>
-       <p onclick="" style="color: #00A859; margin-left: 130px;"> Forgot Password?</p> 
+        <p  class="mx-2" style="color: #7C797A;">I agree with <a style="color: #00A859;" href="#">Privacy Policy</a> and <a style="color: #00A859;" href="#">Terms of Use</a></p>
       </div>
     <!-- checkbox ends -->
 </div>
    <!-- button  -->
-       <button class="sign-btn" onclick="" style="padding:5px 180px;border-radius: 8px;border: none;color: #FFFFFF;  background-color:#00A859;outline: none;">Sign In</button>
+       <button class="sign-btn" onclick="" style="padding:5px 175px;border-radius: 8px;border: none;color: #FFFFFF;  background-color:#00A859;outline: none;">Sign Up</button>
        <!-- button ends  -->
       </form>
      
@@ -41,9 +44,7 @@
     <!-- Form ends -->
 </div>
   </section>
-  <!-- bootstrap  -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 </body>
 </html>
-
