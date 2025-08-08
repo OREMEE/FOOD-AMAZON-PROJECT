@@ -18,14 +18,21 @@ body {
   border-bottom: 1px solid #e8ecef;
   display: block;
   border: none;
-
   color: #7c797a;
 }
 
 form {
   padding-top: 120px;
 }
-
+.contain {
+  background-color: #EFFFE5;
+  height: 400px;
+  position: relative;
+}
+.contain img {
+  position: absolute;
+  margin-left: 180px;
+}
 /* form for log-in/sign-in */
 
 /*landong page*/
@@ -57,6 +64,9 @@ margin-left: 250px;
 
 .shop-btn{
 width: 100% !important;
+}
+.organic-btn {
+  margin-left: 65px !important;
 }
 
 }
