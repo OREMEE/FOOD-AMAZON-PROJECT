@@ -8,12 +8,12 @@ body {
   margin: 0;
 }
 
-.row{
+.row {
   padding: 0;
   margin: 0;
 }
- 
-    /* form  */
+
+/* form  */
 .input-form input {
   border-bottom: 1px solid #e8ecef;
   display: block;
@@ -25,54 +25,70 @@ form {
   padding-top: 120px;
 }
 .contain {
-  background-color: #EFFFE5;
+  background-color: #efffe5;
   height: 400px;
   position: relative;
 }
-.contain img {
-  position: absolute;
-  margin-left: 180px;
+.newsletter{
+  background: url('./assest/Base.png') no-repeat center /cover;
+  width: 70%;
+height: 300px;
 }
-/* form for log-in/sign-in */
+footer h5 {
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+}
 
-/*landong page*/
-/* .btn-nav {
-margin-left: 250px;
+.input-but{
+  border-radius: 12px;
+}
 
-} */
-
-/* .logo-img{
-  margin-left: 30px;
-  margin-right: 50px;
-} */
-
-@media screen and (max-width: 650px){
-  form{
+@media screen and (max-width: 650px) {
+  form {
     padding-top: 40px;
     padding-left: 20px;
   }
-  
-  .check-form{
+
+  .check-form {
     margin-left: -20px;
   }
 
-#sign-btn{
-  width: 100% !important;
-  margin-left: -5px !important;
-}  
+  #sign-btn {
+    width: 100% !important;
+    margin-left: -5px !important;
+  }
 
-
-.shop-btn{
-width: 100% !important;
-}
-.organic-btn {
-  margin-left: 65px !important;
-}
-
+  .shop-btn {
+    width: 100% !important;
+  }
+  .organic-btn {
+    margin-left: 65px !important;
+  }
+  footer {
+    height: 1000px !important;
+  }
+  .pay {
+    height: auto !important;
+  }
+  .green-pattern img {
+    margin-top: -40px !important;
+  }
+  .details img {
+    margin-top: -15px !important;
+  }
+  .bulk-orders {
+    height: 2300px !important;
+  }
+  .newsletter {
+    width: 120% !important;
+  }
+ .contain {
+ 
+ }
 }
 
 @media screen and (min-width: 700px) and (max-width: 990px) {
-  form{
+  form {
     padding-top: 40px;
     padding-left: 200px;
   }
