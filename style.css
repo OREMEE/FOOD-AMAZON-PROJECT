@@ -29,20 +29,22 @@ form {
   height: 400px;
   position: relative;
 }
-.newsletter{
-  background: url('./assest/Base.png') no-repeat center /cover;
+.newsletter {
+  background: url("./assest/Base.png") no-repeat center / cover;
   width: 70%;
-height: 300px;
+  height: 300px;
 }
 footer h5 {
   font-size: 20px;
   font-family: "Roboto", sans-serif;
 }
 
-.input-but{
+.input-but {
   border-radius: 12px;
 }
-
+#product-head{
+ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
 @media screen and (max-width: 650px) {
   form {
     padding-top: 40px;
@@ -82,9 +84,8 @@ footer h5 {
   .newsletter {
     width: 120% !important;
   }
- .contain {
- 
- }
+  
+
 }
 
 @media screen and (min-width: 700px) and (max-width: 990px) {
