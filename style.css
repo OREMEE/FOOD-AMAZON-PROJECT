@@ -79,7 +79,10 @@ height: 120vh;
 .pop-hr2{
   margin-top: -60px;
   width: 68%;
-
+}
+.pop-hr3 {
+  width: 85%;
+   margin-top: -60px;
 }
 
 
@@ -129,7 +132,10 @@ height: 120vh;
   height: 60vh !important;
 }
 .cart-container {
-height: auto;
+height: 160vh;
+}
+.pop-hr, .pop-hr2, .pop-hr3{
+  width: 100%;
 }
 }
 
