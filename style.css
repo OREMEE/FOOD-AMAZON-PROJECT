@@ -46,51 +46,49 @@ footer h5 {
 .mix {
   margin-left: 75px;
 }
-.add-cart, .check-out {
+.add-cart,
+.check-out {
   border: none;
-  background-color: #00A859;
+  background-color: #00a859;
   color: white;
 }
-.check-out{
-  background-color: #F58634;
+.check-out {
+  background-color: #f58634;
 }
-.select img{
+.select img {
   width: 10%;
- 
 }
-#product-head{
- box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+#product-head {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .pop-up {
-  background-color: #00A859;
-  
+  background-color: #00a859;
 }
 .cart-container {
-background-color: white;
-width: 100%;
-height: 120vh;
+  background-color: white;
+  width: 100%;
+  height: 120vh;
 }
-.pop-hr{
+.pop-hr {
   margin-top: -60px;
   width: 75%;
 }
 
-.pop-hr2{
+.pop-hr2 {
   margin-top: -60px;
   width: 68%;
 }
 .pop-hr3 {
   width: 85%;
-   margin-top: -60px;
+  margin-top: -60px;
 }
 .cart-hr {
   margin-top: -50px;
 }
-.cart-hr2{
+.cart-hr2 {
   margin-top: -10px;
 }
-
 
 @media screen and (max-width: 650px) {
   form {
@@ -131,29 +129,38 @@ height: 120vh;
   .newsletter {
     width: 120% !important;
   }
-  .sign-logo{
-  padding-left: 150px !important;
-}
-.sign-img {
-  height: 60vh !important;
-}
-.cart-container {
-height: 160vh;
-}
-.pop-hr, .pop-hr2, .pop-hr3, .cart-hr, .cart-hr2{
-  width: 100%;
-}
-   .product-img {
-      width: 50px;
-      height: 50px;
-      object-fit: cover;
-      border-radius: 5px;
-    }
-    .remove-btn {
-      cursor: pointer;
-      color: #888;
-    
-    }
+  .sign-logo {
+    padding-left: 150px !important;
+  }
+  .sign-img {
+    height: 60vh !important;
+  }
+  .cart-container {
+    height: 160vh;
+  }
+  .pop-hr,
+  .pop-hr2,
+  .pop-hr3,
+  .cart-hr,
+  .cart-hr2 {
+    width: 100%;
+  }
+  .product-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  .remove-btn {
+    cursor: pointer;
+    color: #888;
+  }
+  #dine {
+    display: none !important;
+  }
+  .table {
+    margin-left: -15px;
+  }
 }
 
 @media screen and (min-width: 700px) and (max-width: 990px) {
