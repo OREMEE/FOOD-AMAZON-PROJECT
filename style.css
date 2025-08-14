@@ -84,6 +84,12 @@ height: 120vh;
   width: 85%;
    margin-top: -60px;
 }
+.cart-hr {
+  margin-top: -50px;
+}
+.cart-hr2{
+  margin-top: -10px;
+}
 
 
 @media screen and (max-width: 650px) {
@@ -134,9 +140,20 @@ height: 120vh;
 .cart-container {
 height: 160vh;
 }
-.pop-hr, .pop-hr2, .pop-hr3{
+.pop-hr, .pop-hr2, .pop-hr3, .cart-hr, .cart-hr2{
   width: 100%;
 }
+   .product-img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .remove-btn {
+      cursor: pointer;
+      color: #888;
+    
+    }
 }
 
 @media screen and (min-width: 700px) and (max-width: 990px) {
