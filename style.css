@@ -32,8 +32,9 @@ form {
 }
 .newsletter {
   background: url("./assest/Base.png") no-repeat center / cover;
-  width: 70%;
+  width: 80%;
   height: 300px;
+  border-radius: 10px;
 }
 footer h5 {
   font-size: 20px;
@@ -41,7 +42,7 @@ footer h5 {
 }
 
 .input-but {
-  border-radius: 12px;
+  border-radius: 10px;
 }
 .mix {
   margin-left: 75px;
@@ -127,8 +128,8 @@ footer h5 {
     height: 2300px !important;
   }
   .newsletter {
-    width: 120% !important;
-  }
+width: 100% !important;  
+}
   .sign-logo {
     padding-left: 150px !important;
   }
@@ -161,6 +162,30 @@ footer h5 {
   .table {
     margin-left: -15px;
   }
+  .br {
+    display: none;
+  }
+  .home h1{
+    font-size: 40px !important;
+    margin-bottom: 20px !important;
+   
+  }
+  .home button {
+    margin-bottom: 50px;
+  }
+  .card{
+    width: 109%;
+     margin-left: -15px;
+  }
+ .green-card {
+  height: 400px !important;
+  width: 109% !important;
+  margin-left: -15px;
+
+ }
+ .newsletter button {
+  margin-left: -50px !important;
+ }
 }
 
 @media screen and (min-width: 700px) and (max-width: 990px) {
