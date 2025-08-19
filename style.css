@@ -26,6 +26,9 @@ body {
 .custom-input-width {
   width: 60% !important;
 }
+.custom-input-width-1 {
+  width: 69% !important;
+}
 /* .form-outline input.form-control{
   border-bottom: 1px solid #e8ecef !important;
   color: #7c797a !important;

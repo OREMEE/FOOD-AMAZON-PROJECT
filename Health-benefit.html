@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cart Pop-up</title>
+    <title>Health Benefits</title>
     <link rel="stylesheet" href="./style.css" />
     <link
       rel="stylesheet"
@@ -20,9 +20,9 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
     />
   </head>
-  <body class="pop-up">
+  <body>
     <!-- nav starts  -->
-    <section class="header pop-head">
+    <section id="product-head" class="header">
       <nav class="navbar navbar-expand-lg navbar-light">
         <!-- logo  -->
         <div>
@@ -66,7 +66,7 @@
               <a
                 class="nav-link active"
                 aria-current="page"
-                href="./Home.html"
+                href="./index.html"
                 style="color: #0f0b0b; font-size: 15px; font-weight: bold"
                 >Home</a
               >
@@ -147,9 +147,9 @@
                   <i class="bi bi-bag-fill"></i>
                 </button>
               </a>
-                    <a href="./Sign-in.html"
+              <a href="./Sign-in.html"
                 ><button
-                  class="icon-btn "
+                  class="icon-btn"
                   style="background: none; outline: none; border: none"
                   aria-label="signin"
                 >
@@ -181,89 +181,19 @@
     </section>
     <!-- nav ends  -->
 
-    <!-- cart starts -->
-    <section class="container cart-container my-5">
+    <section class="container mt-5">
       <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-6 col-sm-12 col-md-12">
-          <div class="d-flex my-5 fw-bold" style="gap: 200px">
-            <p>Item 1</p>
-            <div class="d-flex" style="gap: 20px">
-              <u><span>Edit</span></u>
-              <u><span>Remove</span></u>
-            </div>
-          </div>
-          <hr class="pop-hr2" />
-          <div class="d-flex" style="gap: 10px">
-            <img src="./assest/Rectangle 5235.png" alt="" />
-            <div class="mt-2">
-              <p class="fw-bold" style="margin-bottom: 1px">
-                Coconut Date Energy Bars
-              </p>
-              <small>Cart ID: 12345678910 </small>
-              <p class="fw-bold">$60</p>
-            </div>
-          </div>
-          <div class="d-flex my-5 fw-bold" style="gap: 200px">
-            <p>Item 2</p>
-            <div class="d-flex" style="gap: 20px">
-              <u><span>Edit</span></u>
-              <u><span>Remove</span></u>
-            </div>
-          </div>
-          <hr class="pop-hr2" />
-          <div class="d-flex" style="gap: 10px">
-            <img src="./assest/Rectangle 5240 (2).png" alt="" />
-            <div class="mt-2">
-              <p class="fw-bold" style="margin-bottom: 1px">
-                Organic Fruit Bites
-              </p>
-              <small>Cart ID: 12345678911 </small>
-              <p class="fw-bold">$60</p>
-            </div>
-          </div>
-          <div class="d-flex my-5 fw-bold" style="gap: 200px">
-            <p>Item 3</p>
-            <div class="d-flex" style="gap: 20px">
-              <u><span>Edit</span></u>
-              <u><span>Remove</span></u>
-            </div>
-          </div>
-          <hr class="pop-hr2" />
-          <div class="d-flex" style="gap: 10px">
-            <img src="./assest/Images (2).png" alt="" />
-            <div class="mt-2">
-              <p class="fw-bold" style="margin-bottom: 1px">
-                Choco-Chia Delight
-              </p>
-              <small>Cart ID: 12345678912 </small>
-              <p class="fw-bold">$60</p>
-            </div>
-          </div>
+        <div class="col-lg-8">
+          <img class="w-50" src="./assest/Images (1).png" alt="" />
         </div>
-        <div class="col-lg-5 col-sm-12 col-md-12">
-          <div class="d-flex my-5 fw-bold" style="gap: 150px">
-            <p>Cart Order Total (3)</p>
-            <p>$582</p>
-          </div>
-          <hr class="pop-hr" />
-          <div>
-            <p class="mb-1">Congrats! You get Free Shipping.</p>
-            <small>Being your first purchase</small>
-          </div>
-          <div class="my-3">
-            <button class="add-cart py-2" style="width: 78%">
-              Add to Cart
-            </button>
-            <br />
-            <button class="mt-2 check-out py-2" style="width: 78%">
-              Check Out
-            </button>
-          </div>
+        <div class="col-lg-4 pt-5">
+          <h5>
+            Whole Grain Content – If made from whole corn or whole grains, they
+            can offer dietary fiber which supports digestion.
+          </h5>
         </div>
       </div>
     </section>
-    <!-- cart ends  -->
 
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
