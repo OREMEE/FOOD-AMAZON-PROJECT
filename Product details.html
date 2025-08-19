@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/9.1.0/mdb.min.css" rel="stylesheet"/> -->
+  </head>
+  <body>
+       <!-- nav starts  -->
+    <section id="product-head" class="header">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <!-- logo  -->
+        <div>
+          <img
+            class="logo-img p-2 mx-lg-5"
+            src="./assest/logo.png"
+            alt="img"
+            width="auto"
+          />
+        </div>
+        <!-- logo  -->
+            <div class="bag">
+          <a href="./Cart.html">
+            <button
+              class="icon-btn cart-icon"
+              style="background: none; outline: none; border: none"
+              aria-label="Cart"
+            >
+              <i class="bi bi-bag-fill"></i>
+            </button>
+          </a>
+        </div>
+        <!-- toogler  -->
+        <button
+          class="navbar-toggler m"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          style="background-color: #c4d1d0"
+        >
+          <span
+            class="navbar-toggler-icon"
+            
+          ></span>
+        </button>
+        <!-- toogler  -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- nav list  -->
+          <ul class="navbar-nav mb-lg-0 mx-lg-5">
+            <li class="nav-item mx-2">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="./index.html"
+                style="color: #0f0b0b; font-size: 15px; font-weight: bold"
+                >Home</a
+              >
+            </li>
+             <li class="nav-item mx-2">
+              <a
+                class="nav-link"
+                href="./Product.html"
+                style="color: #0f0b0b; font-size: 15px; font-weight: bold"
+                >Our Product</a
+              >
+            </li>
+            <li class="nav-item mx-2">
+              <a
+                class="nav-link"
+                href="#"
+                style="color: #0f0b0b; font-size: 15px; font-weight: bold"
+                >Our benefits</a
+              >
+            </li>
+            <li class="nav-item mx-2">
+              <a
+                class="nav-link"
+                href="#"
+                style="color: #0f0b0b; font-size: 15px; font-weight: bold"
+              >
+                Health Benefits
+              </a>
+            </li>
+            <li class="nav-item mx-2">
+              <a
+                class="nav-link disabled"
+                aria-disabled="true"
+                style="color: #0f0b0b; font-size: 15px; font-weight: bold"
+                >Blog</a
+              >
+            </li>
+            <li class="nav-item mx-2">
+              <a
+                class="nav-link disabled"
+                aria-disabled="true"
+                style="color: #0f0b0b; font-size: 15px; font-weight: bold"
+                >FAQs</a
+              >
+            </li>
+            <!-- search icon  -->
+            <div>
+              <button
+                class="icon-btn mt-2 mx-lg-2 mx-3"
+                style="background: none; outline: none; border: none"
+                aria-label="Search"
+              >
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+            <!-- search icon  -->
+          </ul>
+          <!-- nav list  -->
+
+          <!-- cart and button  -->
+          <section class="d-lg-flex mx-lg-5 mx-3" role="search">
+            <div class="icon-group mt-2 mx-lg-5">
+              <a href="./Wishlist.html"><button
+                class="icon-btn"
+                style="background: none; outline: none; border: none"
+                aria-label="Wishlist"
+              >
+                <i class="bi bi-heart"></i>
+              </button>
+              </a>
+            <a href="./Cart.html">
+              <button
+                class="icon-btn cart-icon"
+                style="background:none; outline: none; border: none"
+                aria-label="Cart"
+              >
+                <i class="bi bi-bag-fill"></i>
+              </button>
+            </a>
+              
+            </div>
+            <!-- cart and heart icon  -->
+            <!-- button  -->
+            <button
+              class="green-btn"
+              style="
+                padding: 7px 15px;
+                color: white;
+                background-color: #00a859;
+                border: none;
+                border-radius: 8px;
+                outline: none;
+                box-shadow: none;
+              "
+            >
+              Contact Us
+            </button>
+            <!-- button  -->
+          </section>
+          <!-- cart and button  -->
+        </div>
+      </nav>
+    </section>
+    <!-- nav ends  -->
+    <!-- product section starts -->
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12 col-xl-6">
+          <img class="w-75" src="./assest/product.png" alt="" />
+          <div class="mt-2 select mx-3">
+            <img
+              style="width: 2%; height: 30px"
+              src="./assest/layer1.png"
+              alt=""
+            />
+            <img src="./assest/Frame 115 (3).png" alt="" />
+            <img src="./assest/Frame 115 (3).png" alt="" />
+            <img src="./assest/Frame 115 (3).png" alt="" />
+            <img src="./assest/Frame 115 (3).png" alt="" />
+            <img
+              style="width: 2%; height: 30px"
+              src="./assest/layer2.png"
+              alt=""
+            />
+          </div>
+          <div class="">
+            <h4 class="fw-bolder mt-5">About This Product</h4>
+            <p class="mt-3">
+              Indulge in the natural crunch and flavor of our Crunchy Nut Mix, a
+              <br />
+              blend of premium nuts roasted to perfection. This mix includes
+              <br />
+              almonds, cashews, and walnuts, providing a delicious and <br />
+              nutritious snack that is rich in protein and healthy fats. Blend
+              of organic almonds, cashews, and walnuts Lightly roasted to
+              enhance natural flavors No added oils or preservatives
+            </p>
+            <div class="mt-3">
+              <p>. Blend of organic almonds, cashews, and walnuts</p>
+              <p>. Lightly roasted to enhance natural flavors</p>
+              <p>. No added oils or preservatives</p>
+            </div>
+          </div>
+          <p>
+            <span class="fw-bolder">Benefits: </span> Benefits: Excellent source
+            of protein and healthy fats. Supports <br />
+            heart health and brain function. Satisfies hunger and boosts <br />
+            energy.
+          </p>
+        </div>
+        <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12 col-xl-6">
+          <p>Coconut Flakes</p>
+          <h1 class="fw-bolder">Coconut Crunchies</h1>
+          <span
+            ><s>$120</s>
+            <span style="color: #f86624; font-size: 20px">$60</span></span
+          >
+
+          <p class="mt-3">
+            <span class="fw-bold">Variety:</span>
+            <span class="mx-2">
+              .Classic Nut Mix <br />
+              <span class="mix">.Spicy Nut Mix <br /></span>
+              <span class="mix"> .Sweet & Salty Nut Mix</span>
+            </span>
+          </p>
+          <p class="fw-bold">
+            Quantity: <button class="mx-2 px-2" style="border: none">-</button>
+            <button
+              class="mx-2 px-2"
+              style="border: 1px solid #c4d1d0; background-color: #fff"
+            >
+              1
+            </button>
+            <button class="px-2" style="border: none">+</button>
+          </p>
+          <p class="mt-3 mb-4">
+            Our Date-Coconut Delight combines the rich <br />
+            sweetness of organic date syrup with the tropical <br />
+            flavor of coconut flakes, creating a snack that’s both <br />
+            indulgent and healthy.
+          </p>
+          <div>
+            <button class="add-cart w-100 py-2">Add to Cart</button> <br />
+            <button class="mt-2 check-out w-100 py-2">Check Out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- product section ends  -->
+
+    <!-- rating section  -->
+
+    <section class="container">
+      <div class="row">
+        <div class="col-lg-8 col-sm-12 col-md-12 col-xl-8 mt-lg-3 mt-5">
+          <p class="fw-bolder">Customer Reviews</p>
+          <p>77 Reviews</p>
+          <img
+            class="mb-3"
+            style="width: 15%; margin-top: -17px; margin-left: -10px"
+            src="./assest/Stars.png"
+            alt=""
+          />
+          <div class="mx-lg-0 mx-3">
+            <div class="d-flex">
+              <p style="font-size: 13px">5 Stars</p>
+              <img
+                class="m-2"
+                style="height: 5px; width: 50%"
+                src="./assest/Rectangle 5240.png"
+                alt=""
+              />
+              <p style="font-size: 13px">37</p>
+            </div>
+            <div class="d-flex">
+              <p style="font-size: 13px">4 Stars</p>
+              <img
+                class="m-2"
+                style="height: 5px; width: 50%"
+                src="./assest/Rectangle 5240.png"
+                alt=""
+              />
+              <p style="font-size: 13px">20</p>
+            </div>
+            <div class="d-flex">
+              <p style="font-size: 13px">3 Stars</p>
+              <img
+                class="m-2"
+                style="height: 5px; width: 50%"
+                src="./assest/Rectangle 5240.png"
+                alt=""
+              />
+              <p style="font-size: 13px">12</p>
+            </div>
+            <div class="d-flex">
+              <p style="font-size: 13px">2 Stars</p>
+              <img
+                class="m-2"
+                style="height: 5px; width: 50%"
+                src="./assest/Rectangle 5240.png"
+                alt=""
+              />
+              <p style="font-size: 13px">8</p>
+            </div>
+            <div class="d-flex">
+              <p style="font-size: 13px">1 Stars</p>
+              <img
+                class="m-2"
+                style="height: 5px; width: 50%"
+                src="./assest/Rectangle 5240.png"
+                alt=""
+              />
+              <p style="font-size: 13px">0</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-12 col-md-12 col-xl-4">
+          <p class="fw-bolder">How would you rate this?</p>
+          <div><img src="./assest/Rating.png" alt="" /></div>
+          <div>
+            <label for="review" class="fw-bold mt-4"> Add a headline </label>
+          </div>
+          <input
+            type="text"
+            name="review"
+            id="review"
+            placeholder="Write a summary of your review"
+            class="form-control"
+          />
+          <div>
+            <label for="review" class="mt-4 fw-bold"> Write a review </label>
+          </div>
+<div class="form-outline" data-mdb-input-init mt-3>
+  <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
+  <label class="form-label" for="textAreaExample">Tell us what you think</label>
+</div>
+          <button
+            class="mt-2 btn btn-md"
+            style="background-color: #00a859; color: #fff"
+          >
+            Submit Review
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- rating section  -->
+
+    <!-- card rating section  -->
+    <section class="container mt-5">
+      <div class="row gx-0 rate-card mt-lg-0 mt-3">
+        <div class="col-lg-4 col-xl-4 col-sm-12 col-md-12 col-xs-12">
+          <div class="card rate-me" style="width: 21rem">
+            <div class="card-body mx-2">
+              <img src="./assest/Ellipse 28 (1).png" alt="">
+              <p class="card-title mb-0 fw-bold">Sarah Taylor</p>
+              <img style="width: 20%;" src="./assest/Stars.png" alt="">
+              <p class="card-subtitle mt-3 mb-2 fw-bold">
+                Organic Fruit Bites
+              </p>
+              <small class="card-text">
+               They're the perfect snack for my kids <br> and I feel great knowing they're eating <br> something healthy and natural.
+              </small>
+            
+            </div>
+          </div>
+        </div>
+          <div class="col-lg-4 col-xl-4 col-sm-12 col-md-12 col-xs-12 mt-lg-0 mt-2">
+          <div class="card rate-me" style="width: 21rem">
+            <div class="card-body mx-2">
+              <img src="./assest/Ellipse 28 (2).png" alt="">
+              <p class="card-title mb-0 fw-bold">Sarah Taylor</p>
+              <img style="width: 20%;" src="./assest/Stars.png" alt="">
+              <p class="card-subtitle mt-3 mb-2 fw-bold">
+                Organic Fruit Bites
+              </p>
+              <small class="card-text">
+               They're the perfect snack for my kids <br> and I feel great knowing they're eating <br> something healthy and natural.
+              </small>
+            
+            </div>
+          </div>
+        </div>
+          <div class="col-lg-4 col-xl-4 col-sm-12 col-md-12 col-xs-12 mt-lg-0 mt-2">
+          <div class="card rate-me" style="width: 21rem">
+            <div class="card-body">
+              <img src="./assest/Ellipse 28.png" alt="">
+              <p class="card-title mb-0 fw-bold">Sarah Taylor</p>
+              <img style="width: 20%;" src="./assest/Stars.png" alt="">
+              <p class="card-subtitle mt-3 mb-2 fw-bold">
+                Organic Fruit Bites
+              </p>
+              <small class="card-text">
+               They're the perfect snack for my kids <br> and I feel great knowing they're eating <br> something healthy and natural.
+              </small>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="row gx-0 rate-card mt-3">
+        <div class="col-lg-4 col-xl-4 col-sm-12 col-md-12 col-xs-12">
+          <div class="card rate-me" style="width: 21rem">
+            <div class="card-body mx-2">
+              <img src="./assest/Ellipse 28 (1).png" alt="">
+              <p class="card-title mb-0 fw-bold">Sarah Taylor</p>
+              <img style="width: 20%;" src="./assest/Stars.png" alt="">
+              <p class="card-subtitle mt-3 mb-2 fw-bold">
+                Organic Fruit Bites
+              </p>
+              <small class="card-text">
+               They're the perfect snack for my kids <br> and I feel great knowing they're eating <br> something healthy and natural.
+              </small>
+            
+            </div>
+          </div>
+        </div>
+          <div class="col-lg-4 col-xl-4 col-sm-12 col-md-12 col-xs-12 mt-lg-0 mt-2">
+          <div class="card rate-me" style="width: 21rem">
+            <div class="card-body mx-2">
+              <img src="./assest/Ellipse 28.png" alt="">
+              <p class="card-title mb-0 fw-bold">Sarah Taylor</p>
+              <img style="width: 20%;" src="./assest/Stars.png" alt="">
+              <p class="card-subtitle mt-3 mb-2 fw-bold">
+                Organic Fruit Bites
+              </p>
+              <small class="card-text">
+               They're the perfect snack for my kids <br> and I feel great knowing they're eating <br> something healthy and natural.
+              </small>
+            
+            </div>
+          </div>
+        </div>
+          <div class="col-lg-4 col-xl-4 col-sm-12 col-md-12 col-xs-12 mt-lg-0 mt-2">
+          <div class="card rate-me" style="width: 21rem">
+            <div class="card-body">
+              <img src="./assest/Ellipse 28 (2).png" alt="">
+              <p class="card-title mb-0 fw-bold">Sarah Taylor</p>
+              <img style="width: 20%;" src="./assest/Stars.png" alt="">
+              <p class="card-subtitle mt-3 mb-2 fw-bold">
+                Organic Fruit Bites
+              </p>
+              <small class="card-text">
+               They're the perfect snack for my kids <br> and I feel great knowing they're eating <br> something healthy and natural.
+              </small>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- card rating section  -->
+
+    <!--Similar product card section ends  -->
+    <section class="container">
+      <div>
+        <h1
+          class="fw-bolder pt-5 mb-4"
+          style="
+            font-size: 40px;
+            font-family: 'Roboto', san-serif;
+            color: #0f0b0b;
+          "
+        >
+          Similar Products
+        </h1>
+      </div>
+      <div class="row">
+        <div class="col-lg-5 col-xs-12 col-sm-12 col-md-12 col-xl-5 mb-3">
+          <p class="" style="font-family: 'Inter', sans-serif; color: #4d4d4d">
+            Browse our most popular snacks and make your day <br />
+            more beautiful and glorious.
+          </p>
+        </div>
+        <div
+          class="col-lg-2 col-xs-12 col-sm-12 col-md-12 col-xl-2 offset-lg-5"
+        >
+          <button
+            type="button"
+            class="btn btn-outline-success btn-md mb-lg-0 mb-3"
+          >
+            Browse All
+          </button>
+        </div>
+      </div>
+      <div class="row gx-lg-5 mb-5">
+        <div class="col-lg-4 col-xs-12 col-sm-12 col-md-12 col-xl-4">
+          <div class="card-img">
+            <img class="w-100" src="./assest/Images (1).png" alt="" />
+          </div>
+          <div class="d-flex mt-3" style="justify-content: space-between">
+            <p style="color: #4d4d4d">Coconut Flakes</p>
+            <button
+              class="icon-btn"
+              style="
+                color: #0f0b0b;
+                background: none;
+                outline: none;
+                border: none;
+              "
+              aria-label="Wishlist"
+            >
+              <i class="bi bi-heart"></i>
+            </button>
+          </div>
+          <p
+            class="flakes-p mt-2"
+            style="
+              font-size: 20px;
+              font-family: 'Roboto', sans-serif;
+              font-weight: bold;
+            "
+          >
+            Organic Almond Delight
+          </p>
+          <div class="mt-3 mb-2 d-flex" style="justify-content: space-between">
+            <p class="rating">
+              <span class="" style="height: 22px; width: 24px">★</span>
+              <span style="color: #4d4d4d">5.0 (18)</span>
+            </p>
+            <p style="color: #4d4d4d; font-size: 18px; font-weight: bold">
+              $110
+            </p>
+          </div>
+          <button type="button" class="btn btn-outline-success w-100">
+            Add to Cart
+          </button>
+        </div>
+        <div
+          class="col-lg-4 col-xs-12 col-sm-12 col-md-12 col-xl-4 mt-3 mt-lg-0"
+        >
+          <div class="card-img">
+            <img class="w-100" src="./assest/Images(3).png" alt="" />
+          </div>
+          <div class="d-flex mt-3" style="justify-content: space-between">
+            <p style="color: #4d4d4d">Coconut Flakes</p>
+            <button
+              class="icon-btn"
+              style="
+                color: #0f0b0b;
+                background: none;
+                outline: none;
+                border: none;
+              "
+              aria-label="Wishlist"
+            >
+              <i class="bi bi-heart"></i>
+            </button>
+          </div>
+          <p
+            class="flakes-p mt-2"
+            style="
+              font-size: 20px;
+              font-family: 'Roboto', sans-serif;
+              font-weight: bold;
+            "
+          >
+            Berry Bliss Bites
+          </p>
+          <div class="mt-3 mb-2 d-flex" style="justify-content: space-between">
+            <p class="rating">
+              <span class="" style="height: 22px; width: 24px">★</span>
+              <span style="color: #4d4d4d">5.0 (28)</span>
+            </p>
+            <p style="color: #4d4d4d; font-size: 18px; font-weight: bold">
+              $139
+            </p>
+          </div>
+          <button type="button" class="btn btn-outline-success w-100">
+            Add to Cart
+          </button>
+        </div>
+        <div
+          class="col-lg-4 col-xs-12 col-sm-12 col-md-12 col-xl-4 mt-3 mt-lg-0"
+        >
+          <div class="card-img">
+            <img class="w-100" src="./assest/Images.png" alt="" />
+          </div>
+          <div class="d-flex mt-3" style="justify-content: space-between">
+            <p style="color: #4d4d4d">Coconut Flakes</p>
+            <button
+              class="icon-btn"
+              style="
+                color: #0f0b0b;
+                background: none;
+                outline: none;
+                border: none;
+              "
+              aria-label="Wishlist"
+            >
+              <i class="bi bi-heart"></i>
+            </button>
+          </div>
+          <p
+            class="flakes-p mt-2"
+            style="
+              font-size: 20px;
+              font-family: 'Roboto', sans-serif;
+              font-weight: bold;
+            "
+          >
+            Coconut Crunchies
+          </p>
+          <div class="mt-3 mb-2 d-flex" style="justify-content: space-between">
+            <p class="rating">
+              <span class="" style="height: 22px; width: 24px">★</span>
+              <span style="color: #4d4d4d">5.0 (102)</span>
+            </p>
+            <p style="color: #4d4d4d; font-size: 18px; font-weight: bold">
+              $399
+            </p>
+          </div>
+          <button type="button" class="btn btn-outline-success w-100">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </section>
+    <!--Similar product card section ends  -->
+
+       <footer
+      class="container-fluid"
+      style="background-color: #1b2432; height: 500px; width: auto"
+    >
+      <div class="text-center pt-5">
+        <h3
+          style="
+            font-size: 32px;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+          "
+        >
+          Exellent
+        </h3>
+        <img src="./assest/green stars.png" alt="" />
+        <p style="color: white; font-size: 15px">
+          Based on <u>13,586 reviews</u>
+        </p>
+        <div class="trust" style="color: #fff">
+          <img
+            style="position: absolute; left: 46%; margin-top: 5px"
+            src="./assest/Vector (6).png"
+            alt=""
+          />
+          <p>Trustpilot</p>
+        </div>
+      </div>
+      <hr style="color: #4d4d4d; width: 70%;margin-left:160px;" />
+
+      <div class="row mt-lg-5">
+        <div class="col-0 col-lg-1"></div>
+        <div class="col-lg-2 col-md-6 col-sm-6 mb-4 mb-md-2 mx-lg-0">
+          <h5 class="text-light mb-3">Customer Service</h5>
+          <div style="color: #a6b6b6; font-size: 12px">
+            <p>Order Lookup</p>
+            <p>Bulk Order</p>
+            <p>Shipping & Delivery</p>
+            <p>Discounts</p>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6 mb-4 mb-md-2 mx-lg-0">
+          <h5 class="text-light mb-3">About Us</h5>
+          <div style="color: #a6b6b6; font-size: 12px">
+            <p>News & Blogs</p>
+            <p>Suppliers</p>
+            <p>Terms & Conditions</p>
+            <p>Privacy Policy</p>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6 mb-4 mb-md-2 mx-lg-0">
+          <h5 class="text-light mb-3">Need Help?</h5>
+          <div style="color: #a6b6b6; font-size: 12px">
+            <p>Contact US</p>
+            <p>FAQs</p>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6 mb-4 mb-md-2 mx-lg-0">
+          <h5 class="text-light mb-3">Privacy</h5>
+          <div style="color: #a6b6b6; font-size: 12px">
+            <p>Terms & Conditions</p>
+            <p>Privacy Policy</p>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6 mb-md-2 mx-lg-0">
+          <h5 class="text-light mb-3">Follow Us</h5>
+          <div>
+            <img src="./assest/Frame 431.png" alt="" />
+            <img src="./assest/Frame 432.png" alt="" />
+            <img src="./assest/Frame 433.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div
+      class="container-fluid pay"
+      style="background-color: #d9d9d9; height: 65px; width: auto"
+    >
+      <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-3 col-sm-12 text-center">
+          <img
+            class="pt-1"
+            src="./assest/Foodies logo without Banner 1 (2).png"
+            alt=""
+          />
+        </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-3 col-sm-12 pt-4 text-center">
+          <img class="mr-3" src="./assest/Group 17748.png" alt="" />
+          <img class="mr-3" src="./assest/Vector (7).png" alt="" />
+          <img src="./assest/Group 17749.png" alt="" />
+        </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-3 col-sm-12 pt-4 text-center">
+          <p style="font-size: 10px; color: #0f0b0b">
+            Copyright © 2024 FoodieAmazon. All Rights Reserved
+          </p>
+        </div>
+      </div>
+
+    </div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/9.1.0/mdb.umd.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
