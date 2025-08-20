@@ -29,9 +29,10 @@ body {
 .custom-input-width-1 {
   width: 69% !important;
 }
-/* .form-outline input.form-control{
+/* .form-input {
   border-bottom: 1px solid #e8ecef !important;
   color: #7c797a !important;
+  border: none !important;
 } */
 .contain {
   background-color: #efffe5;
@@ -108,8 +109,14 @@ footer h5 {
 /* .footer hr {
   margin-left: 100px !important;
 } */
+/* .health img{
+width: 50% !important;
+} */
+/* .person-icon {
+  padding-top:30px !important;
+} */
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 600px) {
   #form-sign {
     padding-top: 40px !important;
     padding-left: 20px !important;
@@ -117,10 +124,10 @@ footer h5 {
   .bag {
     display: block;
   }
-.rate-me {
-width: 100% !important;
-margin-left: 2px !important;
-}
+  .rate-me {
+    width: 100% !important;
+    margin-left: 2px !important;
+  }
   .input-form {
     margin-left: -10px !important;
   }
@@ -226,9 +233,12 @@ margin-left: 2px !important;
 footer hr {
   margin-left: 45px !important;
 }
-.trust img{
+.trust img {
   left: 35% !important;
 }
+/* .health img{
+width: 100% !important;
+} */
 @media screen and (min-width: 700px) and (max-width: 990px) {
   form {
     padding-top: 40px;
