@@ -135,7 +135,7 @@ width: 50% !important;
   /* .form-outline {
     width: 100% !important;
   } */
-  .custom-input-width {
+  .custom-input-width, .custom-input-width-1 {
     width: 100% !important;
   }
   .check-form p {
@@ -177,9 +177,9 @@ width: 50% !important;
   .sign-img {
     height: 60vh !important;
   }
-  .cart-container {
+  /* .cart-container {
     height: 160vh;
-  }
+  } */
   .pop-hr,
   .pop-hr2,
   .pop-hr3,
