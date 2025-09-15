@@ -55,21 +55,22 @@
               >
             </p></div>
             <div class="input-form">
-             <div class="form-outline mt-3 custom-input-width" id="sign-fill" data-mdb-input-init>
-  <input type="email" id="typeemail" class="form-control w-25" />
-  <label class="form-label" for="Email">Email Address</label>
-              </div>
-               <div class="form-outline mb-3 mt-3 custom-input-width" id="sign-fill" data-mdb-input-init>
-  <i class="far fa-eye trailing fa-fw pe-auto" id="show-password-toggle-icon"></i>
-  <input type="password" id="show-password-input-1" class="form-control form-icon-trailing" />
-  <label class="form-label" for="show-password-input-1">Password </label>
-                </div>
+        <div class="form-outline mt-3 custom-input-width" id="sign-fill" data-mdb-input-init>
+              <input type="email" id="typeemail" class="form-control w-25 email" />
+              <label class="form-label" for="email">Email Address</label>
+        </div>
+
+        <div class="form-outline mb-3 mt-3 custom-input-width" id="sign-fill" data-mdb-input-init>
+                  <i class="far fa-eye trailing fa-fw pe-auto" id="show-password-toggle-icon"></i>
+                  <input type="password" id="show-password-input-1" class="form-control form-icon-trailing password" />
+                  <label class="form-label" for="show-password-input-1">Password </label>
+           </div>
               <!-- checkbox -->
               <div class="check-form" style="display: inline-flex ">
-                <input class="checkbox2 mb-lg-3 mb-3 mx-lg-0 mx-2" type="checkbox" />
-                <p class="mx-lg-2 mx-2 mt-lg-1" style="color: #7c797a">Remember me</p>
+                <input class="checkbox2 mb-lg-2 mb-3 mx-lg-0 mx-2" type="checkbox" />
+                <p class="mx-lg-2 mx-2 mt-lg-2" style="color: #7c797a; font-size: 15px">Remember me</p>
                 <p
-                  class="forget ml-5 mt-lg-2"
+                  class="forget ml-5 mt-lg-2 mx-5"
                   onclick=""
                   style="color: #00a859; font-size: 15px"
                 >
@@ -81,8 +82,8 @@
             <!-- button  -->
             <button
               id="sign-btn"
-              class="btn-sign mt-lg-2 mb-1"
-              onclick=""
+              class="btn-sign mt-lg-1 mb-1"
+              onclick="signIn(event)"
               style="
                 width: 60%;
                 height: 48px;
@@ -90,9 +91,10 @@
                 border: none;
                 color: #ffffff;
                 background-color: #00a859;
-                outline: none;
-              "
-            >
+                outline: none;" >
+            <div class="spinner-border spinner-border-sm text-light spin"  role="status" style="display: none;">
+            <span class="sr-only" id="spin"></span>
+            </div>
               Sign In
             </button>
             <!-- button ends  -->
@@ -102,6 +104,8 @@
       </div>
     </section>
     <!-- bootstrap  -->
+
+    
        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/9.1.0/mdb.umd.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -113,5 +117,7 @@
       integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
       crossorigin="anonymous"
     ></script>
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="./js/index.js"></script>
   </body>
 </html>

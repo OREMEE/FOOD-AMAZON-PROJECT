@@ -60,59 +60,55 @@
               >
             </p>
           </div>
-
-          <div class="form-input" >
+                
+    <div class="form-input">
+             <!-- name form  -->
             <div class="form-outline custom-input-width-1" data-mdb-input-init>
-              <input type="text" id="typeText" class="form-control" />
+              <input type="text" id="typeText " class="form-control name" />
               <label class="form-label" for="typeText">Your name</label>
             </div>
-            <div
-              class="form-outline mt-3 custom-input-width-1"
-              data-mdb-input-init
-            >
-              <input type="email" id="typeemail" class="form-control w-25 border-none"/>
-              <label class="form-label" for="Email">Email Address</label>
+             <!-- name form  -->
+
+            <!-- email form  -->
+            <div class="form-outline mt-3 custom-input-width-1" data-mdb-input-init>
+                      <input type="email" id="email" class="form-control w-25 border-none email"/>
+                      <label class="form-label" for="email">Email Address</label>
             </div>
-            <div
-              class="form-outline mt-3 custom-input-width-1"
-              data-mdb-input-init
-            >
-              <input type="tel" id="typePhone" class="form-control" />
-              <label class="form-label" for="typePhone">Phone number</label>
+     <!-- email form  -->
+
+              <!-- phone number form  -->
+            <div class="form-outline mt-3 custom-input-width-1" data-mdb-input-init>
+                    <input type="tel" id="phone" class="form-control phone" />
+                    <label class="form-label" for="typePhone">Phone number</label>
             </div>
-            <div
-              class="form-outline mb-3 mt-3 custom-input-width-1"
-              data-mdb-input-init
-            >
-              <i
-                class="far fa-eye trailing fa-fw pe-auto"
-                id="show-password-toggle-icon"
-              ></i>
-              <input
-                type="password"
-                id="show-password-input-1"
-                class="form-control form-icon-trailing"
-              />
-              <label class="form-label" for="show-password-input-1"
-                >Password
+              <!-- phone number form  -->
+
+                   <!-- password form  -->
+            <div class="form-outline mb-3 mt-3 custom-input-width-1" data-mdb-input-init>
+               <i class="far fa-eye trailing fa-fw pe-auto" id="show-password-toggle-icon"></i>
+              <input type="password" id="show-password-input-1 password" class="form-control form-icon-trailing password"/>
+              <label class="form-label" for="show-password-input-1">Password
               </label>
             </div>
-          </div>
-
+                  <!-- password form  -->
+    </div>
+              
           <!-- checkbox -->
           <div class="check-form" style="display: inline-flex">
             <input class="checkbox mb-3" type="checkbox" />
-            <p class="mx-2" style="color: #7c797a">
+            <p class="mx-lg-2 mx-2" style="color: #7c797a">
               I agree with
               <a style="color: #00a859" href="#">Privacy Policy</a> and
               <a style="color: #00a859" href="#">Terms of Use</a>
             </p>
           </div>
           <!-- checkbox ends -->
+
           <!-- button  -->
           <button
             id="sign-btn"
             class="btn-sign mt-2 mb-2"
+            onclick="signUp(event)"
             style="
               width: 69%;
               height: 48px;
@@ -123,9 +119,17 @@
               outline: none;
             "
           >
+            <div
+              class="spinner-border spinner-border-sm text-light spin"
+              style="display: none;"
+              role="status"
+            >
+              <span class="sr-only"></span>
+            </div>
             Sign Up
           </button>
           <!-- button ends  -->
+           
         </div>
         <!-- Form ends -->
       </div>
@@ -144,5 +148,7 @@
       integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
       crossorigin="anonymous"
     ></script>
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/index.js"></script>
   </body>
 </html>
