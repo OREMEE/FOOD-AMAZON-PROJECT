@@ -23,162 +23,169 @@
   </head>
   <body>
     <!-- nav starts  -->
-<section id="product-head" class="header">
-<nav class="navbar navbar-expand-lg navbar-light">
-<!-- logo  -->
-<div>
-<img
-class="logo-img p-2 mx-lg-5"
-src="./assest/logo.png"
-alt="img"
-width="auto"
-/>
-</div>
-<!-- logo  -->
-   <div class="bag">
-    <a href="./Cart.html">
+    <section id="product-head" class="header">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <!-- logo  -->
+        <div>
+          <img
+            class="logo-img p-2 mx-lg-5"
+            src="./assest/logo.png"
+            alt="img"
+            width="auto"
+          />
+        </div>
+        <!-- logo  -->
+        <div class="bag">
+          <a href="./Cart.html">
+            <button
+              class="icon-btn cart-icon position-relative"
+              style="background: none; outline: none; border: none"
+              aria-label="Cart"
+            >
+              <i class="bi bi-bag-fill h5"></i>
+              <span
+                id="cartCount"
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              >
+                0
+              </span>
+            </button>
+          </a>
+        </div>
+        <!-- toogler  -->
         <button
-          class="icon-btn cart-icon position-relative"
-          style="background: none; outline: none; border: none"
-          aria-label="Cart">
-          <i class="bi bi-bag-fill h5"></i>
-            <span id="cartCount" 
-            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-        0
-      </span>
+          class="navbar-toggler m"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          style="background-color: #c4d1d0"
+        >
+          <span class="navbar-toggler-icon"></span>
         </button>
-      </a>
-   </div>
-<!-- toogler  -->
-<button
-class="navbar-toggler m"
-type="button"
-data-toggle="collapse"
-data-target="#navbarSupportedContent"
-aria-controls="navbarSupportedContent"
-aria-expanded="false"
-aria-label="Toggle navigation"
-style="background-color: #c4d1d0"
->
-<span class="navbar-toggler-icon"></span>
-</button>
-<!-- toogler  -->
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-<!-- nav list  -->
-<ul class="navbar-nav mb-lg-0 mx-lg-5">
-<li class="nav-item mx-2">
-  <a
-    class="nav-link active"
-    aria-current="page"
-    href="./index.html"
-    style="color: #0f0b0b; font-size: 15px; font-weight: bold"
-    >Home</a
-  >
-</li>
-<li class="nav-item mx-2">
-  <a
-    class="nav-link"
-    href="./Product.html"
-    style="color: #0f0b0b; font-size: 15px; font-weight: bold"
-    >Our Product</a
-  >
-</li>
-<li class="nav-item mx-2">
-  <a
-    class="nav-link"
-    href="#"
-    style="color: #0f0b0b; font-size: 15px; font-weight: bold"
-    >Our benefits</a
-  >
-</li>
-<li class="nav-item mx-2">
-  <a
-    class="nav-link"
-    href="#"
-    style="color: #0f0b0b; font-size: 15px; font-weight: bold"
-  >
-    Health Benefits
-  </a>
-</li>
-<li class="nav-item mx-2">
-  <a
-    class="nav-link disabled"
-    aria-disabled="true"
-    style="color: #0f0b0b; font-size: 15px; font-weight: bold"
-    >Blog</a
-  >
-</li>
-<li class="nav-item mx-2">
-  <a
-    class="nav-link disabled"
-    aria-disabled="true"
-    style="color: #0f0b0b; font-size: 15px; font-weight: bold"
-    >FAQs</a
-  >
-</li>
-<!-- search icon  -->
-<div>
-  <button
-    class="icon-btn mt-2 mx-lg-2 mx-3"
-    style="background: none; outline: none; border: none"
-    aria-label="Search"
-  >
-    <i class="bi bi-search"></i>
-  </button>
-</div>
-<!-- search icon  -->
-</ul>
-<!-- nav list  -->
-<!-- cart and button  -->
-<section class="d-lg-flex mx-lg-5" role="search">
-  <a href="./Wishlist.html"
-    ><button
-      class="icon-btn mt-3"
-      style="background: none; outline: none; border: none"
-      aria-label="Wishlist"
-    >
-      <i class="bi bi-heart h5"></i>
-    </button>
-  </a>
-  <a href="./Cart.html">
-    <button
-      class="icon-btn cart-icon mt-3"
-      style="background: none; outline: none; border: none"
-      aria-label="Cart"
-    >
-      <i class="bi bi-bag-fill h5 mx-lg-2"></i>
-    </button>
-  </a>
-  <a href="./Sign-in.html"
-    ><button
-      class="icon-btn person-icon mt-lg-2 mt-4 mx-lg-2"
-      style="background: none; outline: none; border: none"
-      aria-label="signin"
-    >
-      <i class="bi bi-person h2" id="bi-sign"></i>
-    </button>
-  </a>
-<!-- cart and heart icon  -->
-    <!-- button  -->
-<button
-  class="green-btn mx-lg-3 mt-2"
-  style="
-    padding: 7px 15px;
-    color: white;
-    background-color: #00a859;
-    border: none;
-    border-radius: 8px;
-    outline: none;
-    box-shadow: none;
-  "
->
-  Contact Us
-</button>
-<!-- button  -->
-</section>
-<!-- cart and button  -->
-
-</section>
+        <!-- toogler  -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- nav list  -->
+          <ul class="navbar-nav mb-lg-0 mx-lg-5">
+            <li class="nav-item mx-2">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="./index.html"
+                style="color: #0f0b0b; font-size: 15px; font-weight: bold"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item mx-2">
+              <a
+                class="nav-link"
+                href="./Product.html"
+                style="color: #0f0b0b; font-size: 15px; font-weight: bold"
+                >Our Product</a
+              >
+            </li>
+            <li class="nav-item mx-2">
+              <a
+                class="nav-link"
+                href="#"
+                style="color: #0f0b0b; font-size: 15px; font-weight: bold"
+                >Our benefits</a
+              >
+            </li>
+            <li class="nav-item mx-2">
+              <a
+                class="nav-link"
+                href="#"
+                style="color: #0f0b0b; font-size: 15px; font-weight: bold"
+              >
+                Health Benefits
+              </a>
+            </li>
+            <li class="nav-item mx-2">
+              <a
+                class="nav-link disabled"
+                aria-disabled="true"
+                style="color: #0f0b0b; font-size: 15px; font-weight: bold"
+                >Blog</a
+              >
+            </li>
+            <li class="nav-item mx-2">
+              <a
+                class="nav-link disabled"
+                aria-disabled="true"
+                style="color: #0f0b0b; font-size: 15px; font-weight: bold"
+                >FAQs</a
+              >
+            </li>
+            <!-- search icon  -->
+            <div>
+              <button
+                class="icon-btn mt-2 mx-lg-2 mx-3"
+                style="background: none; outline: none; border: none"
+                aria-label="Search"
+              >
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+            <!-- search icon  -->
+          </ul>
+          <!-- nav list  -->
+          <!-- cart and button  -->
+          <section class="d-lg-flex mx-lg-5" role="search">
+            <a href="./Wishlist.html"
+              ><button
+                class="icon-btn mt-3"
+                style="background: none; outline: none; border: none"
+                aria-label="Wishlist"
+              >
+                <i class="bi bi-heart h5"></i>
+              </button>
+            </a>
+        <a href="./Cart.html">
+          <button
+            class="icon-btn cart-icon position-relative mt-3"
+            style="background: none; outline: none; border: none"
+            aria-label="Cart"
+          >
+            <i class="bi bi-bag-fill h5"></i>
+            <span
+              id="cartCountNav"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >
+              0
+            </span>
+          </button>
+          </a>
+            <a href="./Sign-in.html"
+              ><button
+                class="icon-btn person-icon mt-lg-2 mt-4 mx-lg-2"
+                style="background: none; outline: none; border: none"
+                aria-label="signin"
+              >
+                <i class="bi bi-person h2" id="bi-sign"></i>
+              </button>
+            </a>
+            <!-- cart and heart icon  -->
+            <!-- button  -->
+            <button
+              class="green-btn mx-lg-3 mt-2"
+              style="
+                padding: 7px 15px;
+                color: white;
+                background-color: #00a859;
+                border: none;
+                border-radius: 8px;
+                outline: none;
+                box-shadow: none;
+              "
+            >
+              Contact Us
+            </button>
+            <!-- button  -->
+          </section>
+          <!-- cart and button  -->
           <!-- cart and button  -->
         </div>
       </nav>
@@ -205,8 +212,8 @@ style="background-color: #c4d1d0"
               alt=""
             />
           </div> -->
-      <img id="mainImage" class="product-imgs mb-3" src="" alt="">
-      <div class="thumbs d-flex"></div>
+          <img id="mainImage" class="product-imgs mb-3" src="" alt="" />
+          <div class="thumbs d-flex"></div>
           <!-- <div class="">
             <h4 class="fw-bolder mt-5">About This Product</h4>
             <p class="mt-3">
@@ -236,7 +243,7 @@ style="background-color: #c4d1d0"
           <p id="longDesc"></p>
           <p><strong>Ingredients:</strong> <span id="ingredients"></span></p>
           <p><strong>Benefits:</strong> <span id="benefit"></span></p>
-  </div>
+        </div>
         <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12 col-xl-6">
           <!-- <p>Coconut Flakes</p>
           <h1 class="fw-bolder">Coconut Crunchies</h1>
@@ -274,30 +281,51 @@ style="background-color: #c4d1d0"
             <button class="mt-2 check-out w-100 py-2">Check Out</button>
           </div>
         </div> -->
-      <p id="category"></p>
-      <h2 id="productName"></h2>
-      <del id="oldPrice"></del>
-      <span class="fw-bold" id="price" style="color: #f86624; font-size: 20px" id="price"></span>
-      <div id="varieties" class="mb-3 mx-2"></div>
-<!-- // quantity  -->
-      <div class="d-flex align-items-center mb-3">
-        <label class="me-2 mx-3 fw-bold">Quantity:</label>
-        <button class="btn btn-outline-secondary btn-sm me-2" onclick="changeQty(-1)">-</button>
-        <span id="quantity">1</span>
-        <button class="btn btn-outline-secondary btn-sm mx-2" onclick="changeQty(1)">+</button>
-      </div>
-      <!-- // short description  -->
-      <p id="shortDesc"></p>
+          <p id="category"></p>
+          <h2 id="productName"></h2>
+          <del id="oldPrice"></del>
+          <span
+            class="fw-bold"
+            id="price"
+            style="color: #f86624; font-size: 20px"
+            id="price"
+          ></span>
+          <div id="varieties" class="mb-3 mx-2"></div>
+          <!-- // quantity  -->
+          <div class="d-flex align-items-center mb-3">
+            <label class="me-2 mx-3 fw-bold">Quantity:</label>
+            <button
+              class="btn btn-outline-secondary btn-sm me-2"
+              onclick="changeQty(-1)"
+            >
+              -
+            </button>
+            <span id="quantity">1</span>
+            <button
+              class="btn btn-outline-secondary btn-sm mx-2"
+              onclick="changeQty(1)"
+            >
+              +
+            </button>
+          </div>
+          <!-- // short description  -->
+          <p id="shortDesc"></p>
 
-      <button class=" add-cart w-100 py-2">Add to Cart</button> <br />
-      <button class=" mt-2 check-out w-100 py-2 mb-5">Check Out</button>
-     
-    </div>
-  </div>
+          <button
+            class="add-cart w-100 py-2"
+            id="addToCartBtn"
+            onclick="addToCart(productId, qty)"
+          >
+            Add to Cart
+          </button>
+          <br />
+          <button class="mt-2 check-out w-100 py-2 mb-5">Check Out</button>
+        </div>
       </div>
     </div>
+
     <!-- product section ends  -->
-<!--  rating section  -->
+    <!--  rating section  -->
 
     <section class="container">
       <div class="row">

@@ -35,18 +35,17 @@
         </div>
         <!-- logo  -->
       <div class="bag">
-    <a href="./Cart.html">
         <button
-          class="icon-btn cart-icon position-relative"
+          class="icon-btn cart-icon mt-3 position-relative"
           style="background: none; outline: none; border: none"
-          aria-label="Cart">
-          <i class="bi bi-bag-fill h5"></i>
-            <span id="cartCount" 
-            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          aria-label="Cart"
+        >
+          <i class="bi bi-bag-fill h5 mx-lg-2"></i>
+          <span id="cartCount" 
+          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
         0
-      </span>
+        </span>
         </button>
-      </a>
       </div>
         <!-- toogler  -->
         <button
@@ -140,15 +139,21 @@
                   <i class="bi bi-heart h5"></i>
                 </button>
               </a>
-              <a href="./Cart.html">
-                <button
-                  class="icon-btn cart-icon mt-3"
-                  style="background: none; outline: none; border: none"
-                  aria-label="Cart"
-                >
-                  <i class="bi bi-bag-fill h5 mx-lg-2"></i>
-                </button>
-              </a>
+        <a href="./Cart.html">
+          <button
+            class="icon-btn cart-icon position-relative mt-3"
+            style="background: none; outline: none; border: none"
+            aria-label="Cart"
+          >
+            <i class="bi bi-bag-fill h5"></i>
+            <span
+              id="cartCountNav"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >
+              0
+            </span>
+          </button>
+          </a>
               <a href="./Sign-in.html"
                 ><button
                   class="icon-btn person-icon mt-lg-2 mt-4 mx-lg-2"
@@ -410,5 +415,6 @@
       integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
       crossorigin="anonymous"
     ></script>
+    <script src="./js/index.js"></script>
   </body>
 </html>

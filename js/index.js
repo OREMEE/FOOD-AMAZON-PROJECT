@@ -225,6 +225,21 @@ async function showProducts() {
                class="card-img-top product-img productImage"
                onclick="goToProductDetails('${productId}')">
           <div class="card-body">
+           <div class="d-flex mt-3" style="justify-content: space-between">
+            <p style="color: #4d4d4d">Coconut Flakes</p>
+            <button
+              class="icon-btn"
+              style="
+                color: #0f0b0b;
+                background: none;
+                outline: none;
+                border: none;
+              "
+              aria-label="Wishlist"
+            >
+              <i class="bi bi-heart"></i>
+            </button>
+          </div>
             <p class="card-title mt-3">${product.name}</p>
             <div class="d-flex justify-content-between">
               <span class="fw-bold">₦${product.price}</span>
@@ -363,6 +378,21 @@ async function backFiveProducts() {
              class="card-img-top product-img productImage"
              onclick="goToProductDetails('${productId}')">
         <div class="card-body">
+         <div class="d-flex mt-3" style="justify-content: space-between">
+            <p style="color: #4d4d4d">Coconut Flakes</p>
+            <button
+              class="icon-btn"
+              style="
+                color: #0f0b0b;
+                background: none;
+                outline: none;
+                border: none;
+              "
+              aria-label="Wishlist"
+            >
+              <i class="bi bi-heart"></i>
+            </button>
+          </div>
           <p class="card-title mt-3">${product.name}</p>
            <div class="d-flex justify-content-between">
             <span class="fw-bold">₦${product.price}</span>
@@ -371,7 +401,7 @@ async function backFiveProducts() {
               <span style="color: #4d4d4d">5.0 (18)</span>
             </p>
           </div>
-          <button type="button" class="btn btn-outline-success w-100 mt-2">
+          <button type="button" class="btn btn-outline-success w-100 mt-2 add-to" data-id="${productId}">
             Add To Cart
           </button>
         </div>
@@ -418,6 +448,22 @@ async function firstFiveProducts() {
                class="card-img-top product-img productImage"
                onclick="goToProductDetails('${productId}')">
           <div class="card-body">
+           <div class="d-flex mt-3" style="justify-content: space-between">
+            <p style="color: #4d4d4d">Coconut Flakes</p>
+            <button
+              class="icon-btn add-to-wishlist" 
+              data-id="${productId}"
+              style="
+                color: #0f0b0b;
+                background: none;
+                outline: none;
+                border: none;
+              "
+              aria-label="Wishlist"
+            >
+              <i class="bi bi-heart"></i>
+            </button>
+          </div>
              <p class="card-title mt-3">${product.name}</p>
             <div class="d-flex justify-content-between">
               <span class="fw-bold">₦${product.price}</span>
@@ -426,7 +472,7 @@ async function firstFiveProducts() {
               <span style="color: #4d4d4d">5.0 (18)</span>
             </p>           
              </div>
-            <button type="button" class="btn btn-outline-success w-100 mt-2">
+            <button type="button" class="btn btn-outline-success w-100 mt-2 add-to" data-id="${productId}" id="wishlistCountNav">
               Add To Cart
             </button>
           </div>
@@ -452,17 +498,107 @@ function goToProductDetails(productId) {
 }
 
 
-// for product details
+// CART SYSTEM
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let qty = 1; 
+let productId = null;
+let currentProduct = null;
 
+// ✅ Update the cart count in the badge
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+   const counters = document.querySelectorAll("#cartCount, #cartCountNav");
+  counters.forEach(counter => {
+    if (counter) counter.textContent = totalItems;
+  });
+}
+
+
+// ✅ Add a product to cart (store full details)
+function addToCart(product, qty = 1) {
+  if (!product || !product._id) return;
+
+  qty = Number(qty) || 1;
+
+  // define oldPrice based on your rule
+  const oldPrice = (product.price || 0) + 500;
+
+  const existingItem = cart.find(item => item.id === product._id);
+  if (existingItem) {
+    existingItem.qty += qty;
+  } else {
+    cart.push({
+      id: product._id,
+      name: product.name,
+      price: product.price,       // discounted price
+      oldPrice: oldPrice,         // original price (price + 500)
+      image: product.image,
+      qty: qty
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  alert("✅ Product added to cart!");
+}
+
+// 3. Attach one global listener for Add To Cart and Wishlist
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("add-to")) {
+    const productId = e.target.dataset.id;
+    handleAddToCart(productId);
+  }
+
+    if (e.target.classList.contains("add-to-wishlist")) {
+    const productId = e.target.dataset.id;
+    handleAddToWishlist(productId);
+  }
+});
+
+//product add to cart
+async function handleAddToCart(productId) {
+  try {
+    const response = await fetch(`http://localhost:3000/amazon/document/api/products/${productId}`);
+    if (!response.ok) throw new Error("Failed to fetch product details");
+
+    const product = await response.json();
+    addToCart(product, 1); // default qty = 1
+  } catch (err) {
+    console.error("Error adding to cart:", err);
+  }
+}
+
+async function handleAddToWishlist(productId) {
+  try {
+    const response = await fetch(`http://localhost:3000/amazon/document/api/products/${productId}`);
+    if (!response.ok) throw new Error("Failed to fetch product details");
+
+    const product = await response.json();
+    addToWishlist(product);
+  } catch (err) {
+    console.error("Error adding to wishlist:", err);
+  }
+}
+
+// 4. Render products
+showProducts();
+backFiveProducts();
+firstFiveProducts();
+
+
+
+// Load product details
 async function loadProductDetails() {
   const params = new URLSearchParams(window.location.search);
-  const productId = params.get("id");
+  productId = params.get("id");
 
   if (!productId) return;
 
   try {
     const response = await fetch(`http://localhost:3000/amazon/document/api/products/${productId}`);
     const product = await response.json();
+    currentProduct = product; // ✅ save product globally
 
     // ✅ Name
     document.getElementById("productName").textContent = product.name || "Unnamed Product";
@@ -472,82 +608,188 @@ async function loadProductDetails() {
     document.getElementById("price").textContent = `₦${price}`;
     document.getElementById("oldPrice").textContent = price ? `₦${price + 500}` : "";
 
-    // ✅ Image (fallback placeholder if missing)
+    // ✅ Main Image
     const imgElement = document.getElementById("mainImage");
     imgElement.src = product.image || "https://via.placeholder.com/300x300?text=No+Image";
     imgElement.alt = product.name || "Product Image";
 
-// Main image
-document.getElementById("mainImage").src = product.image;
-
-// Thumbnails
-const thumbs = document.querySelector(".thumbs");
-if (product.images && product.images.length > 0) {
-  thumbs.innerHTML = product.images
-    .map(img => `<img src="${img}" onclick="changeImage('${img}')">`)
-    .join("");
-} else {
-  thumbs.innerHTML = `<img src="${product.image}" onclick="changeImage('${product.image}')">`;
-}
-
+    // ✅ Thumbnails
+    const thumbs = document.querySelector(".thumbs");
+    if (product.images && product.images.length > 0) {
+      thumbs.innerHTML = product.images
+        .map(img => `<img src="${img}" onclick="changeImage('${img}')">`)
+        .join("");
+    } else {
+      thumbs.innerHTML = `<img src="${product.image}" onclick="changeImage('${product.image}')">`;
+    }
 
     // ✅ Description
-    document.getElementById("shortDesc").textContent =
-      product.description || "No description available.";
-    document.getElementById("longDesc").textContent =
-      product.description || "No additional information available.";
+    document.getElementById("shortDesc").textContent = product.description || "No description available.";
+    document.getElementById("longDesc").textContent = product.description || "No additional information available.";
 
     // ✅ Benefits
     document.getElementById("benefit").textContent =
-      product.benefit && product.benefit.trim().length > 0
-        ? product.benefit
-        : "No benefits listed.";
+      product.benefit && product.benefit.trim().length > 0 ? product.benefit : "No benefits listed.";
 
     // ✅ Ingredients
     document.getElementById("ingredients").textContent =
-      product.ingredients && product.ingredients.length > 0
-        ? product.ingredients.join(", ")
-        : "No ingredients listed.";
+      product.ingredients && product.ingredients.length > 0 ? product.ingredients.join(", ") : "No ingredients listed.";
 
     // ✅ Varieties
     const varietiesDiv = document.getElementById("varieties");
     if (product.variety && product.variety.length > 0) {
       varietiesDiv.innerHTML = `<strong>Variety:</strong><ul>` +
-        product.variety.map(v =>
-          `<li>${v.label || "Unnamed"} - ₦${v.price || "N/A"}</li>`
-        ).join("") +
+        product.variety.map(v => `<li>${v.label || "Unnamed"} - ₦${v.price || "N/A"}</li>`).join("") +
         `</ul>`;
     } else {
       varietiesDiv.innerHTML = "<strong>Variety:</strong> None available.";
     }
+
   } catch (error) {
     console.error("Error loading product:", error);
     document.getElementById("productName").textContent = "Error loading product.";
   }
 }
 
-// Change image when thumbnail clicked
+// ✅ Change image when thumbnail clicked
 function changeImage(src) {
   document.getElementById("mainImage").src = src;
 }
 
-// Quantity adjustment
-let qty = 1;
+// ✅ Quantity adjustment
 function changeQty(val) {
   qty = Math.max(1, qty + val);
   document.getElementById("quantity").textContent = qty;
 }
 
-loadProductDetails();
+// ✅ Init
+document.addEventListener("DOMContentLoaded", () => {
+  loadProductDetails();
+  updateCartCount();
+
+  const addBtn = document.getElementById("addToCartBtn");
+  if (addBtn) {
+    addBtn.addEventListener("click", () => {
+      if (currentProduct) {
+        addToCart(currentProduct, qty); // ✅ full product
+      }
+    });
+  }
+});
+
+
+function renderCart() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartItemsDiv = document.getElementById("cartItems");
+
+  const totalEl = document.getElementById("totalPrice");
+  const originalPriceEl = document.getElementById("originalPrice");
+  const savingsEl = document.getElementById("savings");
+  const shippingEl = document.getElementById("shipping");
+  const taxEl = document.getElementById("tax");
+  const totalItemsEl = document.getElementById("totalItems");
+
+  if (cart.length === 0) {
+    cartItemsDiv.innerHTML = "<p>Your cart is empty.</p>";
+    totalEl.textContent = "0";
+    originalPriceEl.textContent = "0";
+    savingsEl.textContent = "0";
+    shippingEl.textContent = "0";
+    taxEl.textContent = "0";
+    totalItemsEl.textContent = "0";
+    updateCartCount();
+    return;
+  }
+
+  let total = 0;
+  let originalTotal = 0;
+  let savings = 0;
+  let totalItems = 0;
+
+  cartItemsDiv.innerHTML = cart.map((item, index) => {
+    const itemOriginal = (item.oldPrice || item.price) * item.qty;
+    const itemTotal = (item.price || 0) * item.qty;
+    const itemSavings = itemOriginal - itemTotal;
+
+    originalTotal += itemOriginal;
+    total += itemTotal;
+    savings += itemSavings;
+    totalItems += item.qty;
+
+    return `
+    <div class="d-lg-flex my-5 fw-bold" style="gap: 170px">
+        <p>Item ${index + 1}</p>
+        <div class="d-flex" style="gap: 17px">
+          <u><span onclick="saveForLater('${item.id}')">Save for later</span></u>
+          <u><span onclick="removeFromCart('${item.id}')">Remove</span></u>
+          <p class="fw-bold">
+            Qty: 
+            <button class="mx-0 px-2" style="border: none" onclick="updateQty('${item.id}', -1)">-</button>
+            <button class="mx-1 px-2" style="border: 1px solid #c4d1d0; background-color: #fff">${item.qty}</button>
+            <button class="px-2" style="border: none" onclick="updateQty('${item.id}', 1)">+</button>
+          </p>
+        </div>
+      </div>
+      <hr class="pop-hr3" />
+      <div class="d-flex" style="gap: 10px">
+        <img src="${item.image || './assets/placeholder.png'}" alt="${item.name}" width="80" height="80" />
+        <div class="mt-2">
+          <p class="fw-bold" style="margin-bottom: 1px">${item.name}</p>
+          <small>Cart ID: ${item.id}</small>
+         <p>
+            <span style="text-decoration: line-through; color:gray;">₦${(item.oldPrice || item.price).toLocaleString()}</span>
+            <span class="fw-bold"> ₦${item.price.toLocaleString()}</span>
+            × ${item.qty} = ₦${itemTotal.toLocaleString()}
+          </p>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  // shipping rule
+  const shipping = total > 5000 ? 0 : 1500;
+  const tax = Math.round(total * 0.05);
+  const finalTotal = total + shipping + tax;
+
+  // summary section
+  originalPriceEl.textContent = originalTotal.toLocaleString();
+  savingsEl.innerHTML = `<span style="color:green; font-weight:bold;">₦${savings.toLocaleString()}</span>`;
+  shippingEl.innerHTML = shipping === 0 
+    ? `<span style="color:green; font-weight:bold;">Free</span>`
+    : `₦${shipping.toLocaleString()}`;
+  taxEl.textContent = `₦${tax.toLocaleString()}`;
+  totalEl.textContent = finalTotal.toLocaleString();
+
+  totalItemsEl.textContent = totalItems;
+  updateCartCount();
+}
 
 
 
+// Remove item
+function removeFromCart(id) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart = cart.filter(item => item.id !== id);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
 
+// Update item quantity
+function updateQty(id, change) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart = cart.map(item => {
+    if (item.id === id) {
+      item.qty = Math.max(1, (Number(item.qty) || 1) + change);
+    }
+    return item;
+  });
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
 
+// Optional: Save for later (can just remove from cart for now)
+function saveForLater(id) {
+  alert("Item saved for later (not yet implemented).");
+}
 
-
-
-
-//  <p class="card-text">
-//               ${product.description.length > 60 ? product.description.substring(0, 60) + "..." : product.description}
-//             </p>
+document.addEventListener("DOMContentLoaded", renderCart);

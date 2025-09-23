@@ -34,20 +34,21 @@
           />
         </div>
         <!-- logo  -->
-         <div class="bag">
-    <a href="./Cart.html">
-        <button
-          class="icon-btn cart-icon position-relative"
-          style="background: none; outline: none; border: none"
-          aria-label="Cart">
-          <i class="bi bi-bag-fill h5"></i>
-            <span id="cartCount" 
-            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-        0
-      </span>
-        </button>
-      </a>
-   </div>
+        <div class="bag">
+          <button
+            class="icon-btn cart-icon position-relative"
+            style="background: none; outline: none; border: none"
+            aria-label="Cart"
+          >
+            <i class="bi bi-bag-fill h5"></i>
+            <span
+              id="cartCount"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >
+              0
+            </span>
+          </button>
+        </div>
         <!-- toogler  -->
         <button
           class="navbar-toggler m"
@@ -129,37 +130,43 @@
           </ul>
           <!-- nav list  -->
 
-      <!-- cart and button  -->
+          <!-- cart and button  -->
           <section class="d-lg-flex mx-lg-5" role="search">
-              <a href="./Wishlist.html"
-                ><button
-                  class="icon-btn mt-3"
-                  style="background: none; outline: none; border: none"
-                  aria-label="Wishlist"
-                >
-                  <i class="bi bi-heart h5"></i>
-                </button>
-              </a>
-              <a href="./Cart.html">
-                <button
-                  class="icon-btn cart-icon mt-3"
-                  style="background: none; outline: none; border: none"
-                  aria-label="Cart"
-                >
-                  <i class="bi bi-bag-fill h5 mx-lg-2"></i>
-                </button>
-              </a>
-              <a href="./Sign-in.html"
-                ><button
-                  class="icon-btn person-icon mt-lg-2 mt-4 mx-lg-2"
-                  style="background: none; outline: none; border: none"
-                  aria-label="signin"
-                >
-                  <i class="bi bi-person h2" id="bi-sign"></i>
-                </button>
-              </a>
+            <a href="./Wishlist.html"
+              ><button
+                class="icon-btn mt-3"
+                style="background: none; outline: none; border: none"
+                aria-label="Wishlist"
+              >
+                <i class="bi bi-heart h5"></i>
+              </button>
+            </a>
+         <a href="./Cart.html">
+          <button
+            class="icon-btn cart-icon position-relative mt-3"
+            style="background: none; outline: none; border: none"
+            aria-label="Cart"
+          >
+            <i class="bi bi-bag-fill h5"></i>
+            <span
+              id="cartCountNav"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >
+              0
+            </span>
+          </button>
+          </a>
+            <a href="./Sign-in.html"
+              ><button
+                class="icon-btn person-icon mt-lg-2 mt-4 mx-lg-2"
+                style="background: none; outline: none; border: none"
+                aria-label="signin"
+              >
+                <i class="bi bi-person h2" id="bi-sign"></i>
+              </button>
+            </a>
             <!-- cart and heart icon  -->
-               <!-- button  -->
+            <!-- button  -->
             <button
               class="green-btn mx-lg-3 mt-2"
               style="
@@ -185,8 +192,8 @@
     <!-- cart starts -->
     <section class="container cart-container my-5">
       <div class="row">
-        <div class="col-lg-7 col-sm-12 col-md-12">
-          <p class="fw-bold" style="font-family: 'Roboto', sans-serif">
+        <div class="col-lg-7 col-sm-12 col-md-12" style="max-height: 100vh; overflow-y: auto;">
+          <!-- <p class="fw-bold" style="font-family: 'Roboto', sans-serif">
             Shopping cart (3 items)
           </p>
           <div class="d-lg-flex my-5 fw-bold" style="gap: 170px">
@@ -272,14 +279,24 @@
               <small>Cart ID: 12345678910 </small>
               <p class="fw-bold">NGN60</p>
             </div>
-          </div>
+          </div> -->
+          <h5 class="fw-bold" style="font-family: 'Roboto', sans-serif">
+            Shopping cart (<span id="totalItems">0</span> items)
+          </h5>
+          <div id="cartItems"></div>
         </div>
         <div class="col-lg-5 col-sm-12 col-md-12 col-xl-4">
           <div class="my-5 fw-bold">
             <p>Order Summary</p>
           </div>
           <hr class="cart-hr" />
-          <div class="d-flex" style="justify-content: space-between">
+          <p>
+            <strong>Original Price:</strong> ₦<span id="originalPrice">0</span>
+          </p>
+          <p><strong>Savings:</strong>-<span id="savings">0</span></p>
+          <p><strong>Shipping:</strong><span id="shipping">0</span></p>
+          <p><strong>Estimated Tax:</strong><span id="tax">0</span></p>
+          <!-- <div class="d-flex" style="justify-content: space-between">
             <p class="">Original Price</p>
             <small>NGN582.00</small>
           </div>
@@ -294,14 +311,21 @@
           <div class="d-flex" style="justify-content: space-between">
             <p class="">Estimated Sales Tax</p>
             <small>NGN3.50</small>
-          </div>
+          </div> -->
           <hr class="cart-hr2" />
-          <div class="fw-bold d-flex" style="justify-content: space-between">
+          <p class="fw-bold">
+            <strong>Total Price:</strong> NGN<span id="totalPrice">0</span>
+          </p>
+          <!-- <div class="fw-bold d-flex" style="justify-content: space-between">
             <p>Total</p>
             <p>NGN496.50</p>
-          </div>
+          </div> -->
           <div class="my-3">
-            <button class="check-out py-2" style="width: 100%" onclick="checkOut()">
+            <button
+              class="check-out py-2"
+              style="width: 100%"
+              onclick="checkOut()"
+            >
               Proceed to Check Out
             </button>
           </div>
@@ -311,7 +335,7 @@
     <!-- cart ends  -->
 
     <!--people product card section ends  -->
-    <section class="container my-5">
+    <section class="container my-5 mt-5 mt-lg-0">
       <div>
         <h1
           class="fw-bolder pt-5 mb-5"
@@ -337,7 +361,11 @@
         <div
           class="col-lg-2 col-xs-12 col-sm-12 col-md-12 col-xl-2 offset-lg-5"
         >
-          <button type="button" class="btn btn-outline-success btn-md" onclick="showProduct()">
+          <button
+            type="button"
+            class="btn btn-outline-success btn-md"
+            onclick="showProduct()"
+          >
             Browse All
           </button>
         </div>
@@ -374,7 +402,9 @@
           </p>
           <div class="mt-3 mb-2 d-flex" style="justify-content: space-between">
             <p class="rating">
-              <span class="" style="height: 22px; width: 24px; color: orangered;">★</span>
+              <span class="" style="height: 22px; width: 24px; color: orangered"
+                >★</span
+              >
               <span style="color: #4d4d4d">5.0 (18)</span>
             </p>
             <p style="color: #4d4d4d; font-size: 18px; font-weight: bold">
@@ -418,7 +448,9 @@
           </p>
           <div class="mt-3 mb-2 d-flex" style="justify-content: space-between">
             <p class="rating">
-              <span class="" style="height: 22px; width: 24px;color: orangered;">★</span>
+              <span class="" style="height: 22px; width: 24px; color: orangered"
+                >★</span
+              >
               <span style="color: #4d4d4d">5.0 (28)</span>
             </p>
             <p style="color: #4d4d4d; font-size: 18px; font-weight: bold">
@@ -462,7 +494,9 @@
           </p>
           <div class="mt-3 mb-2 d-flex" style="justify-content: space-between">
             <p class="rating">
-              <span class="" style="height: 22px; width: 24px;color: orangered;">★</span>
+              <span class="" style="height: 22px; width: 24px; color: orangered"
+                >★</span
+              >
               <span style="color: #4d4d4d">5.0 (102)</span>
             </p>
             <p style="color: #4d4d4d; font-size: 18px; font-weight: bold">
@@ -591,7 +625,6 @@
       </div>
       </div> -->
     </div>
-
 
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
