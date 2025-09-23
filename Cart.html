@@ -132,15 +132,19 @@
 
           <!-- cart and button  -->
           <section class="d-lg-flex mx-lg-5" role="search">
-            <a href="./Wishlist.html"
-              ><button
-                class="icon-btn mt-3"
-                style="background: none; outline: none; border: none"
-                aria-label="Wishlist"
-              >
-                <i class="bi bi-heart h5"></i>
-              </button>
-            </a>
+          <a href="./Wishlist.html"
+        ><button
+          class="icon-btn mt-3 position-relative me-3"
+          style="background: none; outline: none; border: none"
+          aria-label="Wishlist"
+        >
+          <i class="bi bi-heart h5"></i>
+           <span id="wishlistCount" 
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    0
+  </span>
+        </button>
+      </a>
          <a href="./Cart.html">
           <button
             class="icon-btn cart-icon position-relative mt-3"
@@ -290,12 +294,22 @@
             <p>Order Summary</p>
           </div>
           <hr class="cart-hr" />
-          <p>
-            <strong>Original Price:</strong> ₦<span id="originalPrice">0</span>
+          <p class=" d-flex justify-content-between">
+            <span>Original Price:</span> 
+            <span id="originalPrice">0</span>
           </p>
-          <p><strong>Savings:</strong>-<span id="savings">0</span></p>
-          <p><strong>Shipping:</strong><span id="shipping">0</span></p>
-          <p><strong>Estimated Tax:</strong><span id="tax">0</span></p>
+          <p class="d-flex justify-content-between">
+          <span>Savings:</span>
+          <span id="savings">-0</span>
+        </p>
+          <p class="d-flex justify-content-between">
+            <span>Shipping:</span>
+            <span id="shipping">0</span>
+          </p>
+          <p class="d-flex justify-content-between">
+            <span>Estimated Tax:</span>
+            <span id="tax">0</span>
+          </p>
           <!-- <div class="d-flex" style="justify-content: space-between">
             <p class="">Original Price</p>
             <small>NGN582.00</small>
@@ -313,8 +327,9 @@
             <small>NGN3.50</small>
           </div> -->
           <hr class="cart-hr2" />
-          <p class="fw-bold">
-            <strong>Total Price:</strong> NGN<span id="totalPrice">0</span>
+          <p class="fw-bold d-flex justify-content-between">
+            <span>Total Price:</span>
+            <span id="totalPrice">0</span>
           </p>
           <!-- <div class="fw-bold d-flex" style="justify-content: space-between">
             <p>Total</p>
@@ -324,7 +339,7 @@
             <button
               class="check-out py-2"
               style="width: 100%"
-              onclick="checkOut()"
+             onclick="goToCheckout()"
             >
               Proceed to Check Out
             </button>

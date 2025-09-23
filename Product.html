@@ -137,15 +137,19 @@ style="background-color: #c4d1d0"
 
 <!-- cart and button  -->
 <section class="d-lg-flex mx-lg-5" role="search">
-  <a href="./Wishlist.html"
-    ><button
-      class="icon-btn mt-3"
-      style="background: none; outline: none; border: none"
-      aria-label="Wishlist"
-    >
-      <i class="bi bi-heart h5"></i>
-    </button>
-  </a>
+ <a href="./Wishlist.html"
+        ><button
+          class="icon-btn mt-3 position-relative me-3"
+          style="background: none; outline: none; border: none"
+          aria-label="Wishlist"
+        >
+          <i class="bi bi-heart h5"></i>
+           <span id="wishlistCount" 
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    0
+  </span>
+        </button>
+      </a>
         <a href="./Cart.html">
           <button
             class="icon-btn cart-icon position-relative mt-3"

@@ -130,15 +130,19 @@
 
    <!-- cart and button  -->
           <section class="d-lg-flex mx-lg-5" role="search">
-              <a href="./Wishlist.html"
-                ><button
-                  class="icon-btn mt-3"
-                  style="background: none; outline: none; border: none"
-                  aria-label="Wishlist"
-                >
-                  <i class="bi bi-heart h5"></i>
-                </button>
-              </a>
+            <a href="./Wishlist.html"
+        ><button
+          class="icon-btn mt-3 position-relative me-3"
+          style="background: none; outline: none; border: none"
+          aria-label="Wishlist"
+        >
+          <i class="bi bi-heart h5"></i>
+           <span id="wishlistCount" 
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    0
+  </span>
+        </button>
+      </a>
         <a href="./Cart.html">
           <button
             class="icon-btn cart-icon position-relative mt-3"
@@ -187,18 +191,52 @@
     </section>
     <!-- nav ends  -->
 
+
+
+  <div class="container my-5">
+    <div class="mb-5">
+  <h2 class="text-center fw-bold" style="font-family: 'Roboto', sans-serif">Wish List</h2>
+  <p class="text-center text-muted" id="wishlistHeader" style="color: #4d4d4d"></p>
+    </div>
+  
+
+  <div class="table-responsive">
+    <table class="table">
+      <thead class="table m-lg-2">
+        <tr>
+          <th></th>
+          <th>Product Name</th>
+          <th>Unit Price</th>
+          <th>Stock Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="wishlistItems">
+        <!-- Wishlist items render here -->
+      </tbody>
+    </table>
+  </div>
+
+  <div class="text-end justify-content-between align-items-center mt-4">
+    <p class="fw-bold">Estimated Total: 
+      <span id="wishlistTotal" class="ms-2">NGN0</span>
+    </p>
+    <button class="btn btn-success px-4 add-cart" onclick="moveAllToCart()">Add to Cart</button>
+  </div>
+</div>
+
     <!-- wish body  -->
-    <div class="text-center my-5 mb-5">
+    <!-- <div class="text-center my-5 mb-5">
       <h1 class="fw-bolder" style="font-family: 'Roboto', sans-serif">
         Wish List
       </h1>
       <p style="color: #4d4d4d">3 items in your wishlist</p>
-    </div>
+    </div> -->
 
     <!-- wish body -->
 
     <!-- table section  -->
-    <section class="container my-5">
+    <!-- <section class="container my-5">
       <table class="table">
         <thead class="table m-lg-2">
           <tr>
@@ -211,7 +249,7 @@
         </thead>
         <tbody>
           <!-- Row 1 -->
-          <tr>
+          <!-- <tr>
             <td class="text-center pt-4">
               <span class="remove-btn">&times;</span>
             </td>
@@ -232,9 +270,9 @@
                 Add to Cart
               </button>
             </td>
-          </tr>
+          </tr> -->
           <!-- Row 2 -->
-          <tr>
+          <!-- <tr>
             <td class="text-center pt-4">
               <span class="remove-btn">&times;</span>
             </td>
@@ -255,9 +293,9 @@
                 Add to Cart
               </button>
             </td>
-          </tr>
+          </tr> -->
           <!-- Row 3 -->
-          <tr>
+          <!-- <tr>
             <td class="text-center pt-4">
               <span class="remove-btn">&times;</span>
             </td>
@@ -278,8 +316,8 @@
                 Add to Cart
               </button>
             </td>
-          </tr>
-        </tbody>
+          </tr> -->
+        <!-- </tbody>
       </table>
       <div class="text-end">
         <p>Estimated Total:</p>
@@ -288,7 +326,7 @@
           Add to Cart
         </button>
       </div>
-    </section>
+    </section>  -->
     <!-- table section  -->
 
     <footer

@@ -2,9 +2,9 @@ function showProduct() {
   location.href = "Product.html";
 }
 
-function checkOut() {
-  location.href = "Check-out.html";
-}
+// function checkOut() {
+//   location.href = "Check-out.html";
+// }
 
 function signUp(event) {
   // prevents page refresh
@@ -228,17 +228,13 @@ async function showProducts() {
            <div class="d-flex mt-3" style="justify-content: space-between">
             <p style="color: #4d4d4d">Coconut Flakes</p>
             <button
-              class="icon-btn"
-              style="
-                color: #0f0b0b;
-                background: none;
-                outline: none;
-                border: none;
-              "
-              aria-label="Wishlist"
-            >
-              <i class="bi bi-heart"></i>
-            </button>
+  class="icon-btn add-to-wishlist"
+  data-id="${productId}"
+  style="color: #0f0b0b; background: none; outline: none; border: none;"
+  aria-label="Wishlist"
+>
+  <i class="bi bi-heart wishlist-icon" data-id="${productId}"></i>
+</button>
           </div>
             <p class="card-title mt-3">${product.name}</p>
             <div class="d-flex justify-content-between">
@@ -380,18 +376,14 @@ async function backFiveProducts() {
         <div class="card-body">
          <div class="d-flex mt-3" style="justify-content: space-between">
             <p style="color: #4d4d4d">Coconut Flakes</p>
-            <button
-              class="icon-btn"
-              style="
-                color: #0f0b0b;
-                background: none;
-                outline: none;
-                border: none;
-              "
-              aria-label="Wishlist"
-            >
-              <i class="bi bi-heart"></i>
-            </button>
+      <button
+  class="icon-btn add-to-wishlist"
+  data-id="${productId}"
+  style="color: #0f0b0b; background: none; outline: none; border: none;"
+  aria-label="Wishlist"
+>
+  <i class="bi bi-heart wishlist-icon" data-id="${productId}"></i>
+</button>
           </div>
           <p class="card-title mt-3">${product.name}</p>
            <div class="d-flex justify-content-between">
@@ -451,18 +443,13 @@ async function firstFiveProducts() {
            <div class="d-flex mt-3" style="justify-content: space-between">
             <p style="color: #4d4d4d">Coconut Flakes</p>
             <button
-              class="icon-btn add-to-wishlist" 
-              data-id="${productId}"
-              style="
-                color: #0f0b0b;
-                background: none;
-                outline: none;
-                border: none;
-              "
-              aria-label="Wishlist"
-            >
-              <i class="bi bi-heart"></i>
-            </button>
+  class="icon-btn add-to-wishlist"
+  data-id="${productId}"
+  style="color: #0f0b0b; background: none; outline: none; border: none;"
+  aria-label="Wishlist"
+>
+  <i class="bi bi-heart wishlist-icon" data-id="${productId}"></i>
+</button>
           </div>
              <p class="card-title mt-3">${product.name}</p>
             <div class="d-flex justify-content-between">
@@ -472,7 +459,7 @@ async function firstFiveProducts() {
               <span style="color: #4d4d4d">5.0 (18)</span>
             </p>           
              </div>
-            <button type="button" class="btn btn-outline-success w-100 mt-2 add-to" data-id="${productId}" id="wishlistCountNav">
+            <button type="button" class="btn btn-outline-success w-100 mt-2 add-to" data-id="${productId}">
               Add To Cart
             </button>
           </div>
@@ -496,97 +483,6 @@ document.addEventListener("DOMContentLoaded", () => {
 function goToProductDetails(productId) {
   window.location.href = `Product-details.html?id=${productId}`;
 }
-
-
-// CART SYSTEM
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let qty = 1; 
-let productId = null;
-let currentProduct = null;
-
-// ✅ Update the cart count in the badge
-function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-   const counters = document.querySelectorAll("#cartCount, #cartCountNav");
-  counters.forEach(counter => {
-    if (counter) counter.textContent = totalItems;
-  });
-}
-
-
-// ✅ Add a product to cart (store full details)
-function addToCart(product, qty = 1) {
-  if (!product || !product._id) return;
-
-  qty = Number(qty) || 1;
-
-  // define oldPrice based on your rule
-  const oldPrice = (product.price || 0) + 500;
-
-  const existingItem = cart.find(item => item.id === product._id);
-  if (existingItem) {
-    existingItem.qty += qty;
-  } else {
-    cart.push({
-      id: product._id,
-      name: product.name,
-      price: product.price,       // discounted price
-      oldPrice: oldPrice,         // original price (price + 500)
-      image: product.image,
-      qty: qty
-    });
-  }
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
-  alert("✅ Product added to cart!");
-}
-
-// 3. Attach one global listener for Add To Cart and Wishlist
-document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("add-to")) {
-    const productId = e.target.dataset.id;
-    handleAddToCart(productId);
-  }
-
-    if (e.target.classList.contains("add-to-wishlist")) {
-    const productId = e.target.dataset.id;
-    handleAddToWishlist(productId);
-  }
-});
-
-//product add to cart
-async function handleAddToCart(productId) {
-  try {
-    const response = await fetch(`http://localhost:3000/amazon/document/api/products/${productId}`);
-    if (!response.ok) throw new Error("Failed to fetch product details");
-
-    const product = await response.json();
-    addToCart(product, 1); // default qty = 1
-  } catch (err) {
-    console.error("Error adding to cart:", err);
-  }
-}
-
-async function handleAddToWishlist(productId) {
-  try {
-    const response = await fetch(`http://localhost:3000/amazon/document/api/products/${productId}`);
-    if (!response.ok) throw new Error("Failed to fetch product details");
-
-    const product = await response.json();
-    addToWishlist(product);
-  } catch (err) {
-    console.error("Error adding to wishlist:", err);
-  }
-}
-
-// 4. Render products
-showProducts();
-backFiveProducts();
-firstFiveProducts();
-
-
 
 // Load product details
 async function loadProductDetails() {
@@ -678,6 +574,77 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// CART SYSTEM
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let qty = 1; 
+let productId = null;
+let currentProduct = null;
+
+// ✅ Update the cart count in the badge
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+   const counters = document.querySelectorAll("#cartCount, #cartCountNav");
+  counters.forEach(counter => {
+    if (counter) counter.textContent = totalItems;
+  });
+}
+
+
+// ✅ Add a product to cart (store full details)
+function addToCart(product, qty = 1) {
+  if (!product || !product._id) return;
+
+  qty = Number(qty) || 1;
+
+  // define oldPrice based on your rule
+  const oldPrice = (product.price || 0) + 500;
+
+  const existingItem = cart.find(item => item.id === product._id);
+  if (existingItem) {
+    existingItem.qty += qty;
+  } else {
+    cart.push({
+      id: product._id,
+      name: product.name,
+      price: product.price,       // discounted price
+      oldPrice: oldPrice,         // original price (price + 500)
+      image: product.image,
+      qty: qty
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  alert("✅ Product added to cart!");
+}
+
+// 3. Attach one global listener for Add To Cart and Wishlist
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("add-to")) {
+    const productId = e.target.dataset.id;
+    handleAddToCart(productId);
+  }
+});
+
+//product add to cart
+async function handleAddToCart(productId) {
+  try {
+    const response = await fetch(`http://localhost:3000/amazon/document/api/products/${productId}`);
+    if (!response.ok) throw new Error("Failed to fetch product details");
+
+    const product = await response.json();
+    addToCart(product, 1); // default qty = 1
+  } catch (err) {
+    console.error("Error adding to cart:", err);
+  }
+}
+
+// Render products into the product card
+showProducts();
+backFiveProducts();
+firstFiveProducts();
+
 function renderCart() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const cartItemsDiv = document.getElementById("cartItems");
@@ -752,19 +719,17 @@ function renderCart() {
   const finalTotal = total + shipping + tax;
 
   // summary section
-  originalPriceEl.textContent = originalTotal.toLocaleString();
+  originalPriceEl.textContent = `₦${originalTotal.toLocaleString()}`;
   savingsEl.innerHTML = `<span style="color:green; font-weight:bold;">₦${savings.toLocaleString()}</span>`;
   shippingEl.innerHTML = shipping === 0 
     ? `<span style="color:green; font-weight:bold;">Free</span>`
     : `₦${shipping.toLocaleString()}`;
   taxEl.textContent = `₦${tax.toLocaleString()}`;
-  totalEl.textContent = finalTotal.toLocaleString();
+  totalEl.textContent = `₦${finalTotal.toLocaleString()}`;
 
   totalItemsEl.textContent = totalItems;
   updateCartCount();
 }
-
-
 
 // Remove item
 function removeFromCart(id) {
@@ -793,3 +758,315 @@ function saveForLater(id) {
 }
 
 document.addEventListener("DOMContentLoaded", renderCart);
+
+// ====== WISHLIST SYSTEM ======
+
+// Load wishlist from localStorage
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+
+// Save wishlist
+function saveWishlist() {
+  localStorage.setItem("wishlist", JSON.stringify(wishlist));
+}
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+// Update wishlist count in navbar
+function updateWishlistCount() {
+  const count = wishlist.length;
+  const counters = document.querySelectorAll("#wishlistCount, #wishlistCountNav");
+  counters.forEach(counter => {
+    if (counter) counter.textContent = count;
+  });
+}
+
+// Update all wishlist icons
+function updateWishlistIcons() {
+  document.querySelectorAll(".wishlist-icon").forEach(icon => {
+    const id = icon.dataset.id;
+    const inWishlist = wishlist.some(item => item.id === id);
+
+    if (inWishlist) {
+      icon.classList.remove("bi-heart");
+      icon.classList.add("bi-heart-fill", "text-danger");
+    } else {
+      icon.classList.add("bi-heart");
+      icon.classList.remove("bi-heart-fill", "text-danger");
+    }
+  });
+}
+
+// Toggle wishlist item
+function toggleWishlist(product) {
+  if (!product || !product._id) return;
+
+  const exists = wishlist.find(item => item.id === product._id);
+
+  if (exists) {
+    wishlist = wishlist.filter(item => item.id !== product._id);
+    alert("💔 Removed from wishlist!");
+  } else {
+    wishlist.push({
+      id: product._id,
+      name: product.name,
+      price: product.price,
+      image: product.image
+    });
+    alert("❤️ Added to wishlist!");
+  }
+
+  saveWishlist();
+  updateWishlistCount();
+  updateWishlistIcons();
+  renderWishlistPage(); // refresh wishlist page if open
+}
+
+// Remove from wishlist (for wishlist page)
+function removeFromWishlist(id) {
+  wishlist = wishlist.filter(item => item.id !== id);
+  saveWishlist();
+  updateWishlistCount();
+  renderWishlistPage();
+}
+
+// Move single item to cart
+function moveToCart(id) {
+  const product = wishlist.find(item => item.id === id);
+  if (!product) return;
+
+  const existing = cart.find(c => c.id === id);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({ ...product, qty: 1 });
+  }
+
+  wishlist = wishlist.filter(item => item.id !== id);
+  saveWishlist();
+  saveCart();
+  updateWishlistCount();
+  renderWishlistPage();
+  alert("✅ Moved to cart!");
+}
+
+// Move all items to cart
+function moveAllToCart() {
+  wishlist.forEach(item => {
+    const existing = cart.find(c => c.id === item.id);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ ...item, qty: 1 });
+    }
+  });
+
+  wishlist = [];
+  saveWishlist();
+  saveCart();
+  updateWishlistCount();
+  renderWishlistPage();
+  alert("✅ All items moved to cart!");
+}
+
+// Render wishlist page (table style)
+function renderWishlistPage() {
+  const container = document.getElementById("wishlistItems");
+  const header = document.getElementById("wishlistHeader");
+  const totalEl = document.getElementById("wishlistTotal");
+
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  if (wishlist.length === 0) {
+    if (header) header.textContent = "Your wishlist is empty 💔";
+    if (totalEl) totalEl.textContent = "₦0";
+    container.innerHTML = `<tr><td colspan="5" class="text-center py-4">No items in wishlist</td></tr>`;
+    return;
+  }
+
+  if (header) header.textContent = `${wishlist.length} items in your wishlist`;
+
+  let total = 0;
+
+  wishlist.forEach(item => {
+    total += Number(item.price);
+
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>
+        <button class="btn btn md" onclick="removeFromWishlist('${item.id}')">×</button>
+      </td>
+      <td>
+        <div class="d-flex align-items-center">
+          <img src="${item.image}" alt="${item.name}" width="60" height="60" class="me-3 rounded">
+          <span class="fw-bold">${item.name}</span>
+        </div>
+      </td>
+      <td>₦${item.price}</td>
+      <td><span class="text-success">In Stock</span></td>
+      <td>
+        <button class="btn btn-success btn-sm" onclick="moveToCart('${item.id}')">Add to Cart</button>
+      </td>
+    `;
+    container.appendChild(row);
+  });
+
+  if (totalEl) totalEl.textContent = `₦${total.toLocaleString()}`;
+}
+
+// Attach click listener (for all wishlist icons on products)
+document.addEventListener("click", (e) => {
+  if (e.target.closest(".add-to-wishlist")) {
+    const btn = e.target.closest(".add-to-wishlist");
+    const productId = btn.dataset.id;
+    handleWishlistToggle(productId);
+  }
+});
+
+// Fetch product details and toggle
+async function handleWishlistToggle(productId) {
+  try {
+    const response = await fetch(`http://localhost:3000/amazon/document/api/products/${productId}`);
+    if (!response.ok) throw new Error("Failed to fetch product");
+
+    const product = await response.json();
+    toggleWishlist(product);
+  } catch (err) {
+    console.error("Error handling wishlist:", err);
+  }
+}
+
+// Init when page loads
+document.addEventListener("DOMContentLoaded", () => {
+  updateWishlistCount();
+  updateWishlistIcons();
+  renderWishlistPage();
+});
+
+
+
+//proceed to checkout starts
+function goToCheckout() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  if (cart.length === 0) {
+    alert("🛒 Your cart is empty!");
+    return;
+  }
+  window.location.href = "./Check-out.html";
+}
+
+//checkout 
+async function directCheckout(productId) {
+  try {
+    const response = await fetch(`http://localhost:3000/amazon/document/api/products/${productId}`);
+    if (!response.ok) throw new Error("Failed to fetch product");
+
+    const product = await response.json();
+
+    // Save a temporary "checkout" cart with just this product
+    const checkoutCart = [{
+      id: product._id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      qty: 1
+    }];
+
+    localStorage.setItem("checkoutCart", JSON.stringify(checkoutCart));
+
+    // Redirect straight to checkout page
+  window.location.href = "./Check-out.html";
+
+  } catch (err) {
+    console.error("Error in direct checkout:", err);
+  }
+}
+
+function renderCheckoutSummary() {
+  let checkoutCart = JSON.parse(localStorage.getItem("checkoutCart"));
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // Use Buy Now checkout if available, else normal cart
+  const items = checkoutCart || cart;
+
+  const itemsContainer = document.getElementById("checkoutItems");
+  const originalEl = document.getElementById("checkoutOriginal");
+  const savingsEl = document.getElementById("checkoutSavings");
+  const shippingEl = document.getElementById("checkoutShipping");
+  const taxEl = document.getElementById("checkoutTax");
+  const totalEl = document.getElementById("checkoutTotal");
+
+  if (!items || items.length === 0) {
+    itemsContainer.innerHTML = "<p>No items to checkout.</p>";
+    originalEl.textContent = "₦0";
+    totalEl.textContent = "₦0";
+    return;
+  }
+
+  let originalPrice = 0;
+  let savings = 0;
+  let shipping = 0; // Free shipping here
+  let taxRate = 0.07; // Example 7% VAT
+  let total = 0;
+
+  itemsContainer.innerHTML = items.map(item => {
+    const itemTotal = item.price * item.qty;
+    originalPrice += itemTotal;
+    return `
+    <div class="d-lg-flex my-5 fw-bold" style="gap: 170px">
+        <p>Item ${index + 1}</p>
+        <div class="d-flex" style="gap: 17px">
+          <u><span onclick="saveForLater('${item.id}')">Save for later</span></u>
+          <u><span onclick="removeFromCart('${item.id}')">Remove</span></u>
+          <p class="fw-bold">
+            Qty: 
+            <button class="mx-0 px-2" style="border: none" onclick="updateQty('${item.id}', -1)">-</button>
+            <button class="mx-1 px-2" style="border: 1px solid #c4d1d0; background-color: #fff">${item.qty}</button>
+            <button class="px-2" style="border: none" onclick="updateQty('${item.id}', 1)">+</button>
+          </p>
+        </div>
+      </div>
+      <hr class="pop-hr3" />
+      <div class="d-flex" style="gap: 10px">
+        <img src="${item.image || './assets/placeholder.png'}" alt="${item.name}" width="80" height="80" />
+        <div class="mt-2">
+          <p class="fw-bold" style="margin-bottom: 1px">${item.name}</p>
+          <small>Cart ID: ${item.id}</small>
+         <p>
+            <span style="text-decoration: line-through; color:gray;">₦${(item.oldPrice || item.price).toLocaleString()}</span>
+            <span class="fw-bold"> ₦${item.price.toLocaleString()}</span>
+            × ${item.qty} = ₦${itemTotal.toLocaleString()}
+          </p>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+
+  // Example calculations
+  savings = originalPrice * 0.05; // e.g. 5% discount
+  let tax = (originalPrice - savings) * taxRate;
+  total = originalPrice - savings + shipping + tax;
+
+  // Update DOM
+  originalEl.textContent = `₦${originalPrice.toLocaleString()}`;
+  savingsEl.textContent = `₦${savings.toLocaleString()}`;
+  shippingEl.textContent = shipping === 0 ? `<span style="color:green; font-weight:bold;">Free</span>` : `₦${shipping.toLocaleString()}`;
+  taxEl.textContent = `₦${tax.toLocaleString()}`;
+  totalEl.textContent = `₦${total.toLocaleString()}`;
+    totalItemsEl.textContent = totalItems;
+
+}
+
+
+
+
+// Run on page load
+document.addEventListener("DOMContentLoaded", () => {
+  renderCheckoutSummary();
+  localStorage.removeItem("checkoutCart"); // clear one-time checkout
+});
+

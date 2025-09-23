@@ -280,8 +280,8 @@ footer hr {
   margin-left: 20px;
 }
 #firstFiveProducts img, #backFive img{
-   height: auto;
-  width: 94%;
+   height: 300px !important;
+  width: 100% !important;
 }
 #allProduct{
   max-width: 100%;
