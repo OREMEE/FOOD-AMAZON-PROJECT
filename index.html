@@ -22,163 +22,169 @@
   </head>
   <body>
     <!-- nav starts  -->
-    <section class="header">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <!-- logo  -->
-        <div>
-          <img
-            class="logo-img p-2 mx-lg-5"
-            src="./assest/logo.png"
-            alt="img"
-            width="auto"
-          />
-        </div>
-        <!-- logo  -->
-          <div class="bag">
-            <a href="./Cart.html">
-                <button
-                  class="icon-btn cart-icon"
-                  style="background: none; outline: none; border: none"
-                  aria-label="Cart"
-                >
-                  <i class="bi bi-bag-fill h5"></i>
-                </button>
-              </a>
-          </div>
-         
-        <!-- toogler  -->
+<section class="header">
+<nav class="navbar navbar-expand-lg navbar-light">
+<!-- logo  -->
+<div>
+  <img
+    class="logo-img p-2 mx-lg-5"
+    src="./assest/logo.png"
+    alt="img"
+    width="auto"
+  />
+</div>
+<!-- logo  -->
+   <div class="bag">
         <button
-          class="navbar-toggler m"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"  
-           style="background-color: #c4d1d0"
-
-        >
-          <span
-            class="navbar-toggler-icon"
-          ></span>
+          class="icon-btn cart-icon position-relative" onclick="goToCart()"
+          style="background: none; outline: none; border: none"
+          aria-label="Cart">
+          <i class="bi bi-bag-fill h5"></i>
+            <span id="cartCount" 
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        0
+      </span>
         </button>
-        <!-- toogler  -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <!-- nav list  -->
-          <ul class="navbar-nav mb-lg-0 mx-lg-5">
-            <li class="nav-item mx-2">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="./index.html"
-                style="color: #0f0b0b; font-size: 15px; font-weight: bold"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item mx-2">
-              <a
-                class="nav-link"
-                href="./Product.html"
-                style="color: #0f0b0b; font-size: 15px; font-weight: bold"
-                >Our Product</a
-              >
-            </li>
-            <li class="nav-item mx-2">
-              <a
-                class="nav-link"
-                href="./Health-benefit.html"
-                style="color: #0f0b0b; font-size: 15px; font-weight: bold"
-                >Our benefits</a
-              >
-            </li>
-            <li class="nav-item mx-2">
-              <a
-                class="nav-link"
-                href="#"
-                style="color: #0f0b0b; font-size: 15px; font-weight: bold"
-              >
-                Health Benefits
-              </a>
-            </li>
-            <li class="nav-item mx-2">
-              <a
-                class="nav-link disabled"
-                aria-disabled="true"
-                style="color: #0f0b0b; font-size: 15px; font-weight: bold"
-                >Blog</a
-              >
-            </li>
-            <li class="nav-item mx-2">
-              <a
-                class="nav-link disabled"
-                aria-disabled="true"
-                style="color: #0f0b0b; font-size: 15px; font-weight: bold"
-                >FAQs</a
-              >
-            </li>
-            <!-- search icon  -->
-            <div>
-              <button
-                class="icon-btn mt-2 mx-lg-2 mx-3"
-                style="background: none; outline: none; border: none"
-                aria-label="Search"
-              >
-                <i class="bi bi-search"></i>
-              </button>
-            </div>
-            <!-- search icon  -->
-          </ul>
-          <!-- nav list  -->
+      
+   </div>
+  
+<!-- toogler  -->
+<button
+  class="navbar-toggler m"
+  type="button"
+  data-toggle="collapse"
+  data-target="#navbarSupportedContent"
+  aria-controls="navbarSupportedContent"
+  aria-expanded="false"
+  aria-label="Toggle navigation"  
+    style="background-color: #c4d1d0"
+
+>
+  <span
+    class="navbar-toggler-icon"
+  ></span>
+</button>
+<!-- toogler  -->
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <!-- nav list  -->
+  <ul class="navbar-nav mb-lg-0 mx-lg-5">
+    <li class="nav-item mx-2">
+      <a
+        class="nav-link active"
+        aria-current="page"
+        href="./index.html"
+        style="color: #0f0b0b; font-size: 15px; font-weight: bold"
+        >Home</a
+      >
+    </li>
+    <li class="nav-item mx-2">
+      <a
+        class="nav-link"
+        href="./Product.html"
+        style="color: #0f0b0b; font-size: 15px; font-weight: bold"
+        >Our Product</a
+      >
+    </li>
+    <li class="nav-item mx-2">
+      <a
+        class="nav-link"
+        href="./Health-benefit.html"
+        style="color: #0f0b0b; font-size: 15px; font-weight: bold"
+        >Our benefits</a
+      >
+    </li>
+    <li class="nav-item mx-2">
+      <a
+        class="nav-link"
+        href="#"
+        style="color: #0f0b0b; font-size: 15px; font-weight: bold"
+      >
+        Health Benefits
+      </a>
+    </li>
+    <li class="nav-item mx-2">
+      <a
+        class="nav-link disabled"
+        aria-disabled="true"
+        style="color: #0f0b0b; font-size: 15px; font-weight: bold"
+        >Blog</a
+      >
+    </li>
+    <li class="nav-item mx-2">
+      <a
+        class="nav-link disabled"
+        aria-disabled="true"
+        style="color: #0f0b0b; font-size: 15px; font-weight: bold"
+        >FAQs</a
+      >
+    </li>
+    <!-- search icon  -->
+    <div>
+      <button
+        class="icon-btn mt-2 mx-lg-2 mx-3"
+        style="background: none; outline: none; border: none"
+        aria-label="Search"
+      >
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+    <!-- search icon  -->
+  </ul>
+  <!-- nav list  -->
+<!-- cart and button  -->
+  <section class="d-lg-flex mx-lg-5" role="search">
+      <a href="./Wishlist.html"
+        ><button
+          class="icon-btn mt-3"
+          style="background: none; outline: none; border: none"
+          aria-label="Wishlist"
+        >
+          <i class="bi bi-heart h5"></i>
+        </button>
+      </a>
+      <a href="./Cart.html">
+        <button
+          class="icon-btn cart-icon mt-3 position-relative"
+          style="background: none; outline: none; border: none"
+          aria-label="Cart"
+        >
+          <i class="bi bi-bag-fill h5 mx-lg-2"></i>
+          <span id="" 
+          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        0
+        </span>
+        </button>
+      </a>
+      <a href="./Sign-in.html"
+        ><button
+          class="icon-btn person-icon mt-lg-2 mt-4 mx-lg-2"
+          style="background: none; outline: none; border: none"
+          aria-label="signin"
+        >
+          <i class="bi bi-person h2" id="bi-sign"></i>
+        </button>
+      </a>
+    <!-- cart and heart icon  -->
+        <!-- button  -->
+    <button
+      class="green-btn mx-lg-3 mt-2"
+      style="
+        padding: 7px 15px;
+        color: white;
+        background-color: #00a859;
+        border: none;
+        border-radius: 8px;
+        outline: none;
+        box-shadow: none;
+      "
+    >
+      Contact Us
+    </button>
+    <!-- button  -->
+  </section>
   <!-- cart and button  -->
-          <section class="d-lg-flex mx-lg-5" role="search">
-              <a href="./Wishlist.html"
-                ><button
-                  class="icon-btn mt-3"
-                  style="background: none; outline: none; border: none"
-                  aria-label="Wishlist"
-                >
-                  <i class="bi bi-heart h5"></i>
-                </button>
-              </a>
-              <a href="./Cart.html">
-                <button
-                  class="icon-btn cart-icon mt-3"
-                  style="background: none; outline: none; border: none"
-                  aria-label="Cart"
-                >
-                  <i class="bi bi-bag-fill h5 mx-lg-2"></i>
-                </button>
-              </a>
-              <a href="./Sign-in.html"
-                ><button
-                  class="icon-btn person-icon mt-lg-2 mt-4 mx-lg-2"
-                  style="background: none; outline: none; border: none"
-                  aria-label="signin"
-                >
-                  <i class="bi bi-person h2" id="bi-sign"></i>
-                </button>
-              </a>
-            <!-- cart and heart icon  -->
-               <!-- button  -->
-            <button
-              class="green-btn mx-lg-3 mt-2"
-              style="
-                padding: 7px 15px;
-                color: white;
-                background-color: #00a859;
-                border: none;
-                border-radius: 8px;
-                outline: none;
-                box-shadow: none;
-              "
-            >
-              Contact Us
-            </button>
-            <!-- button  -->
-          </section>
-          <!-- cart and button  -->
-        
-          </section>
+
+  </section>
           <!-- cart and button  -->
         </div>
       </nav>
@@ -356,139 +362,10 @@
           </button>
         </div>
       </div>
-      <div class="row gx-lg-5 mb-5">
-        <div class="col-lg-4 col-xs-12 col-sm-12 col-md-12 col-xl-4">
-          <div class="card-img">
-            <img class="w-100" src="./assest/Images (1).png" alt="" />
-          </div>
-          <div class="d-flex mt-3" style="justify-content: space-between">
-            <p style="color: #4d4d4d">Coconut Flakes</p>
-            <button
-              class="icon-btn"
-              style="
-                color: #0f0b0b;
-                background: none;
-                outline: none;
-                border: none;
-              "
-              aria-label="Wishlist"
-            >
-              <i class="bi bi-heart"></i>
-            </button>
-          </div>
-          <p
-            class="flakes-p mt-2"
-            style="
-              font-size: 20px;
-              font-family: 'Roboto', sans-serif;
-              font-weight: bold;
-            "
-          >
-            Organic Almond Delight
-          </p>
-          <div class="mt-3 mb-2 d-flex" style="justify-content: space-between">
-            <p class="rating">
-              <span class="" style="height: 22px; width: 24px; color: #f58634;">★</span>
-              <span style="color: #4d4d4d">5.0 (18)</span>
-            </p>
-            <p style="color: #4d4d4d; font-size: 18px; font-weight: bold">
-              NGN110
-            </p>
-          </div>
-          <button type="button" class="btn btn-outline-success w-100">
-            Add to Cart
-          </button>
-        </div>
-        <div
-          class="col-lg-4 col-xs-12 col-sm-12 col-md-12 col-xl-4 mt-3 mt-lg-0"
-        >
-          <div class="card-img">
-            <img class="w-100" src="./assest/Images(3).png" alt="" />
-          </div>
-          <div class="d-flex mt-3" style="justify-content: space-between">
-            <p style="color: #4d4d4d">Coconut Flakes</p>
-            <button
-              class="icon-btn"
-              style="
-                color: #0f0b0b;
-                background: none;
-                outline: none;
-                border: none;
-              "
-              aria-label="Wishlist"
-            >
-              <i class="bi bi-heart"></i>
-            </button>
-          </div>
-          <p
-            class="flakes-p mt-2"
-            style="
-              font-size: 20px;
-              font-family: 'Roboto', sans-serif;
-              font-weight: bold;
-            "
-          >
-            Berry Bliss Bites
-          </p>
-          <div class="mt-3 mb-2 d-flex" style="justify-content: space-between">
-            <p class="rating">
-              <span class="" style="height: 22px; width: 24px; color: #f58634;">★</span>
-              <span style="color: #4d4d4d">5.0 (28)</span>
-            </p>
-            <p style="color: #4d4d4d; font-size: 18px; font-weight: bold">
-              NGN139
-            </p>
-          </div>
-          <button type="button" class="btn btn-outline-success w-100">
-            Add to Cart
-          </button>
-        </div>
-        <div
-          class="col-lg-4 col-xs-12 col-sm-12 col-md-12 col-xl-4 mt-3 mt-lg-0"
-        >
-          <div class="card-img">
-            <img class="w-100" src="./assest/Images.png" alt="" />
-          </div>
-          <div class="d-flex mt-3" style="justify-content: space-between">
-            <p style="color: #4d4d4d">Coconut Flakes</p>
-            <button
-              class="icon-btn"
-              style="
-                color: #0f0b0b;
-                background: none;
-                outline: none;
-                border: none;
-              "
-              aria-label="Wishlist"
-            >
-              <i class="bi bi-heart"></i>
-            </button>
-          </div>
-          <p
-            class="flakes-p mt-2"
-            style="
-              font-size: 20px;
-              font-family: 'Roboto', sans-serif;
-              font-weight: bold;
-            "
-          >
-            Coconut Crunchies
-          </p>
-          <div class="mt-3 mb-2 d-flex" style="justify-content: space-between">
-            <p class="rating">
-              <span class="" style="height: 22px; width: 24px;color: #f58634;">★</span>
-              <span style="color: #4d4d4d">5.0 (102)</span>
-            </p>
-            <p style="color: #4d4d4d; font-size: 18px; font-weight: bold">
-              NGN399
-            </p>
-          </div>
-          <button type="button" class="btn btn-outline-success w-100">
-            Add to Cart
-          </button>
-        </div>
-      </div>
-      <img class="img-fluid w-100" src="./assest/Scroll.png" alt="">
+  <div class="container">
+  <div class="carousel3" id="firstFiveProducts"></div>
+</div>
+  </div>
     </section>
     <!--popular product card section ends  -->
 
@@ -871,139 +748,10 @@
           </button>
         </div>
       </div>
-      <div class="row gx-lg-5 mb-5">
-        <div class="col-lg-4 col-xs-12 col-sm-12 col-md-12 col-xl-4">
-          <div class="card-img">
-            <img class="w-100" src="./assest/Images (1).png" alt="" />
-          </div>
-          <div class="d-flex mt-3" style="justify-content: space-between">
-            <p style="color: #4d4d4d">Coconut Flakes</p>
-            <button
-              class="icon-btn"
-              style="
-                color: #0f0b0b;
-                background: none;
-                outline: none;
-                border: none;
-              "
-              aria-label="Wishlist"
-            >
-              <i class="bi bi-heart"></i>
-            </button>
-          </div>
-          <p
-            class="flakes-p mt-2"
-            style="
-              font-size: 20px;
-              font-family: 'Roboto', sans-serif;
-              font-weight: bold;
-            "
-          >
-            Organic Almond Delight
-          </p>
-          <div class="mt-3 mb-2 d-flex" style="justify-content: space-between">
-            <p class="rating">
-              <span class="" style="height: 22px; width: 24px;color: #f58634;">★</span>
-              <span style="color: #4d4d4d">5.0 (18)</span>
-            </p>
-            <p style="color: #4d4d4d; font-size: 18px; font-weight: bold">
-              NGN110
-            </p>
-          </div>
-          <button type="button" class="btn btn-outline-success w-100">
-            Add to Cart
-          </button>
-        </div>
-        <div
-          class="col-lg-4 col-xs-12 col-sm-12 col-md-12 col-xl-4 mt-3 mt-lg-0"
-        >
-          <div class="card-img">
-            <img class="w-100" src="./assest/Images(3).png" alt="" />
-          </div>
-          <div class="d-flex mt-3" style="justify-content: space-between">
-            <p style="color: #4d4d4d">Coconut Flakes</p>
-            <button
-              class="icon-btn"
-              style="
-                color: #0f0b0b;
-                background: none;
-                outline: none;
-                border: none;
-              "
-              aria-label="Wishlist"
-            >
-              <i class="bi bi-heart"></i>
-            </button>
-          </div>
-          <p
-            class="flakes-p mt-2"
-            style="
-              font-size: 20px;
-              font-family: 'Roboto', sans-serif;
-              font-weight: bold;
-            "
-          >
-            Berry Bliss Bites
-          </p>
-          <div class="mt-3 mb-2 d-flex" style="justify-content: space-between">
-            <p class="rating">
-              <span class="" style="height: 22px; width: 24px;color: #f58634;">★</span>
-              <span style="color: #4d4d4d">5.0 (28)</span>
-            </p>
-            <p style="color: #4d4d4d; font-size: 18px; font-weight: bold">
-              NGN139
-            </p>
-          </div>
-          <button type="button" class="btn btn-outline-success w-100">
-            Add to Cart
-          </button>
-        </div>
-        <div
-          class="col-lg-4 col-xs-12 col-sm-12 col-md-12 col-xl-4 mt-3 mt-lg-0"
-        >
-          <div class="card-img">
-            <img class="w-100" src="./assest/Images.png" alt="" />
-          </div>
-          <div class="d-flex mt-3" style="justify-content: space-between">
-            <p style="color: #4d4d4d">Coconut Flakes</p>
-            <button
-              class="icon-btn"
-              style="
-                color: #0f0b0b;
-                background: none;
-                outline: none;
-                border: none;
-              "
-              aria-label="Wishlist"
-            >
-              <i class="bi bi-heart"></i>
-            </button>
-          </div>
-          <p
-            class="flakes-p mt-2"
-            style="
-              font-size: 20px;
-              font-family: 'Roboto', sans-serif;
-              font-weight: bold;
-            "
-          >
-            Coconut Crunchies
-          </p>
-          <div class="mt-3 mb-2 d-flex" style="justify-content: space-between">
-            <p class="rating">
-              <span class="" style="height: 22px; width: 24px;color: #f58634;">★</span>
-              <span style="color: #4d4d4d">5.0 (102)</span>
-            </p>
-            <p style="color: #4d4d4d; font-size: 18px; font-weight: bold">
-              NGN399
-            </p>
-          </div>
-          <button type="button" class="btn btn-outline-success w-100">
-            Add to Cart
-          </button>
-        </div>
-      </div>
-       <img class="img-fluid w-100" src="./assest/Scroll.png" alt="">
+  <div class="bbb px-lg-5 mt-5">
+  <div class="carousel3" id="backFive">
+  </div>
+</div>
     </section>
     <!--New product card section ends  -->
 
@@ -1210,7 +958,9 @@
           </button>
         </div>
       </div>
+  
     </section>
+  
     <!--Black friday product card section ends  -->
 
     <!-- newsletter section  -->
@@ -1359,6 +1109,7 @@
       </div> -->
     </div>
 
+    
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

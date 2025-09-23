@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .product-img { max-width: 100%; border-radius: 10px; }
+    .thumbs img { width: 60px; cursor: pointer; margin: 5px; border-radius: 6px; }
+    .thumbs img:hover { border: 2px solid #28a745; }
+  </style>
+</head>
+<body>
+<div class="container my-5">
+  <div class="row">
+    <!-- Left Side: Image + Thumbnails -->
+    <div class="col-md-6">
+      <img id="mainImage" class="product-img mb-3" src="" alt="">
+      <div class="thumbs d-flex"></div>
+    </div>
+
+    <!-- Right Side: Details -->
+    <div class="col-md-6">
+      <h6 id="category"></h6>
+      <h2 id="productName"></h2>
+      <p><del id="oldPrice"></del> <span class="fw-bold text-danger" id="price"></span></p>
+
+      <div id="varieties" class="mb-3"></div>
+
+      <div class="d-flex align-items-center mb-3">
+        <label class="me-2">Quantity:</label>
+        <button class="btn btn-outline-secondary btn-sm" onclick="changeQty(-1)">-</button>
+        <span id="quantity" class="mx-2">1</span>
+        <button class="btn btn-outline-secondary btn-sm" onclick="changeQty(1)">+</button>
+      </div>
+
+      <p id="shortDesc"></p>
+
+      <button class="btn btn-success w-50 mb-2">Add to Cart</button>
+      <button class="btn btn-warning w-50">Check Out</button>
+    </div>
+  </div>
+
+  <!-- About Product -->
+  <div class="mt-5">
+    <h4>About This Product</h4>
+    <p id="longDesc"></p>
+    <p><strong>Benefits:</strong> <span id="benefit"></span></p>
+    <p><strong>Ingredients:</strong> <span id="ingredients"></span></p>
+  </div>
+</div>
+<script>
+async function loadProductDetails() {
+  const params = new URLSearchParams(window.location.search);
+  const productId = params.get("id");
+
+  if (!productId) return;
+
+  try {
+    const response = await fetch(`http://localhost:3000/amazon/document/api/products/${productId}`);
+    const product = await response.json();
+
+    document.getElementById("productName").textContent = product.name;
+    document.getElementById("price").textContent = `₦${product.price}`;
+    document.getElementById("shortDesc").textContent = product.description;
+    document.getElementById("longDesc").textContent = product.description;
+    document.getElementById("benefit").textContent = product.benefit;
+    document.getElementById("ingredients").textContent = product.ingredients.join(", ");
+
+    // Main image
+    document.getElementById("mainImage").src = product.image;
+
+    // Thumbnails (reuse same image if no gallery)
+    const thumbs = document.querySelector(".thumbs");
+    thumbs.innerHTML = `<img src="${product.image}" onclick="changeImage('${product.image}')">`;
+
+    // Varieties
+    const varietiesDiv = document.getElementById("varieties");
+    if (product.variety && product.variety.length > 0) {
+      varietiesDiv.innerHTML = `<strong>Variety:</strong><ul>` +
+        product.variety.map(v => `<li>${v.label} - ₦${v.price} (${v.benefits})</li>`).join("") +
+        `</ul>`;
+    }
+  } catch (error) {
+    console.error("Error loading product:", error);
+  }
+}
+
+function changeImage(src) {
+  document.getElementById("mainImage").src = src;
+}
+
+let qty = 1;
+function changeQty(val) {
+  qty = Math.max(1, qty + val);
+  document.getElementById("quantity").textContent = qty;
+}
+
+loadProductDetails();
+</script>
+<script src="product-details.js"></script>
+</body>
+</html>
+
