@@ -572,10 +572,33 @@ function changeImage(src) {
   document.getElementById("mainImage").src = src;
 }
 
+
+
 // ✅ Quantity adjustment
+// function changeQty(val) {
+//   qty = Math.max(1, qty + val);
+//   document.getElementById("quantity").textContent = qty;
+// }
+
+// ✅ Quantity adjustment with live price + oldPrice update
 function changeQty(val) {
   qty = Math.max(1, qty + val);
   document.getElementById("quantity").textContent = qty;
+
+  if (currentProduct) {
+    const basePrice = currentProduct.price || 0;
+    const oldBase = currentProduct.oldPrice || (basePrice + 500);
+
+    const total = basePrice * qty;
+    const oldTotal = oldBase * qty;
+
+    // Update displayed prices
+    const priceEl = document.getElementById("price");
+    const oldPriceEl = document.getElementById("oldPrice");
+
+    if (priceEl) priceEl.textContent = `₦${total.toLocaleString()}`;
+    if (oldPriceEl) oldPriceEl.textContent = `₦${oldTotal.toLocaleString()}`;
+  }
 }
 
 // ✅ Init
@@ -984,9 +1007,40 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Buy Now logic
+// function buyNow(productId) {
+//   if (!isLoggedIn()) {
+//     // Redirect to login
+//     window.location.href = "Sign-in.html";
+//     return;
+//   }
+
+//   fetch(`http://localhost:3000/amazon/document/api/products/${productId}`)
+//     .then(res => res.json())
+//     .then(product => {
+//       if (!product || !product._id) {
+//         alert("⚠️ Failed to load product details");
+//         return;
+//       }
+
+//       // Single product checkout cart
+//       const checkoutCart = [{
+//         id: product._id,
+//         name: product.name,
+//         price: product.price,
+//         image: product.image,
+//         qty: 1
+//       }];
+
+//       localStorage.setItem("checkoutCart", JSON.stringify(checkoutCart));
+
+//       // Go to checkout page
+//       window.location.href = "Check-out.html";
+//     })
+//     .catch(err => console.error("Error in Buy Now:", err));
+// }
+
 function buyNow(productId) {
   if (!isLoggedIn()) {
-    // Redirect to login
     window.location.href = "Sign-in.html";
     return;
   }
@@ -999,18 +1053,20 @@ function buyNow(productId) {
         return;
       }
 
-      // Single product checkout cart
+      currentProduct = product;
+
+      // ✅ Save with actual qty
       const checkoutCart = [{
         id: product._id,
         name: product.name,
         price: product.price,
+        oldPrice: product.oldPrice || (product.price + 500),
         image: product.image,
-        qty: 1
+        qty: qty
       }];
 
       localStorage.setItem("checkoutCart", JSON.stringify(checkoutCart));
 
-      // Go to checkout page
       window.location.href = "Check-out.html";
     })
     .catch(err => console.error("Error in Buy Now:", err));
