@@ -121,15 +121,83 @@ function signUp(event) {
 }
 
 
+// function signIn(event) {
+//   event.preventDefault();
+
+
+//   const spinItem = document.querySelector(".spin");
+//   spinItem.style.display = "inline-block";
+
+//   const getEmail = document.querySelector(".email").value;
+//   const getPassword = document.querySelector(".password").value;
+//   if (getEmail === "" || getPassword === "") {
+//     Swal.fire({
+//       icon: "info",
+//       text: "All fields are required!",
+//       confirmButtonColor: "#f58634",
+//     });
+
+//     spinItem.style.display = "none";
+//     return;
+//   }else {
+//     const signData = {
+//       email: getEmail,
+//       password: getPassword
+//     }
+//     // this is for raw data
+//     // const signData = JSON.stringify({
+//     //     "email": getEmail,
+//     //     "password": getPassword
+//     // })
+
+
+//   const signMethod = {
+//       method: "POST",
+//       headers:{
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify(signData)
+//     }
+
+
+//    const url =
+//       "http://localhost:3000/amazon/document/api/login";
+//     fetch(url, signMethod)
+//       .then(response => response.json())
+//       .then(result => {
+//         console.log(result);
+//         if (result.hasOwnProperty("email")) {
+//           localStorage.setItem("key", result.token);
+
+//           location.href = "./index.html";
+
+//         } else {
+//           Swal.fire({
+//             icon: "success",
+//             title:"Successfully logged In",
+//             confirmButtonColor: "#f58634",
+//           });
+//         }
+//       })
+//       .catch((error) => {
+//         console.log("error", error);
+//         Swal.fire({
+//           icon: "info",
+//           title: "Error, Try again later",
+//           confirmButtonColor: "#f58634",
+//         });
+//       });
+//   }
+// }
 function signIn(event) {
   event.preventDefault();
-
 
   const spinItem = document.querySelector(".spin");
   spinItem.style.display = "inline-block";
 
   const getEmail = document.querySelector(".email").value;
   const getPassword = document.querySelector(".password").value;
+
   if (getEmail === "" || getPassword === "") {
     Swal.fire({
       icon: "info",
@@ -139,42 +207,48 @@ function signIn(event) {
 
     spinItem.style.display = "none";
     return;
-  }else {
-    const signData = {
-      email: getEmail,
-      password: getPassword
-    }
-    // this is for raw data
-    // const signData = JSON.stringify({
-    //     "email": getEmail,
-    //     "password": getPassword
-    // })
+  } else {
+    const signData = { email: getEmail, password: getPassword };
 
-
-  const signMethod = {
+    const signMethod = {
       method: "POST",
-      headers:{
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(signData)
-    }
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(signData),
+    };
 
+    const url = "http://localhost:3000/amazon/document/api/login";
 
-   const url =
-      "http://localhost:3000/amazon/document/api/login";
     fetch(url, signMethod)
-      .then(response => response.json())
-      .then(result => {
+      .then((response) => response.json())
+      .then((result) => {
         console.log(result);
-        if (result.hasOwnProperty("email")) {
-          localStorage.setItem("key", result.token);
 
-          location.href = "./index.html";
+        if (result && result.token) {
+          // ✅ Save token + user object
+          localStorage.setItem("token", result.token);
+          localStorage.setItem(
+            "user",
+            JSON.stringify({
+              email: result.email || getEmail,
+              name: result.name || "Guest",
+              loggedIn: true,
+            })
+          );
 
-        } else {
           Swal.fire({
             icon: "success",
-            title:"Successfully logged In",
+            title: "Successfully logged In",
+            confirmButtonColor: "#f58634",
+          });
+
+          // Redirect after short delay
+          setTimeout(() => {
+            location.href = "./index.html";
+          }, 1500);
+        } else {
+          Swal.fire({
+            icon: "error",
+            text: "Invalid email or password!",
             confirmButtonColor: "#f58634",
           });
         }
@@ -186,9 +260,40 @@ function signIn(event) {
           title: "Error, Try again later",
           confirmButtonColor: "#f58634",
         });
+      })
+      .finally(() => {
+        spinItem.style.display = "none";
       });
   }
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const personIcon = document.getElementById("bi-sign");
+  const personBtn = document.getElementById("person-btn");
+
+  const token = localStorage.getItem("token");
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+
+  if (token && user.loggedIn) {
+    // ✅ Logged in → turn green & redirect to profile
+    personIcon.style.color = "green";
+    personBtn.addEventListener("click", () => {
+      location.href = ""; // change to your dashboard/profile page
+    });
+  } else {
+    // ❌ Not logged in → default color & redirect to sign-in
+    personIcon.style.color = "";
+    personBtn.addEventListener("click", () => {
+      location.href = "./Sign-in.html";
+    });
+  }
+});
+
+function isLoggedIn() {
+  const token = localStorage.getItem("token") || localStorage.getItem("key");
+  const user = JSON.parse(localStorage.getItem("user") || "null");
+  return token && user && user.loggedIn;
+}
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -258,91 +363,6 @@ async function showProducts() {
     console.error("Error loading products:", error);
   }
 }
-
-// async function showProducts() {
-//   try {
-//     const response = await fetch("http://localhost:3000/amazon/document/api/products");
-//     if (!response.ok) throw new Error("Failed to fetch products");
-
-//     const products = await response.json();
-
-//     const container = document.getElementById("allProduct");
-//     if (!container) return;
-
-//     container.innerHTML = "";
-
-//     products.forEach(product => {
-//       const productId = product._id || product.id;
-
-//       const col = document.createElement("div");
-//       col.className = "col-12 col-md-6 col-lg-3 mb-4";
-
-//       col.innerHTML = `
-//         <div class="card h-100 shadow-sm">
-//           <img src="${product.image}" alt="${product.name}"
-//                class="card-img-top product-img productImage"
-//                onclick="goToProductDetails('${productId}')">
-//           <div class="card-body">
-//             <p class="card-title mt-3">${product.name}</p>
-//             <div class="d-flex justify-content-between">
-//               <span class="fw-bold">₦${product.price}</span>
-//               <p class="rating">
-//                 <span style="color: #f58634;">★</span>
-//                 <span style="color: #4d4d4d">5.0 (18)</span>
-//               </p>            
-//             </div>
-//             <button type="button" 
-//                     class="btn btn-outline-success w-100 mt-2 add-to-cart"
-//                     data-id="${productId}">
-//               Add To Cart
-//             </button>
-//           </div>
-//         </div>
-//       `;
-
-//       container.appendChild(col);
-
-//       // ⬇️ Attach click directly to the button we just created
-//       const btn = col.querySelector(".add-to-cart");
-//       btn.addEventListener("click", () => {
-//         addToCart(productId);  // use the helper below
-//       });
-//     });
-
-//   } catch (error) {
-//     console.error("Error loading products:", error);
-//   }
-// }
-
-// add to cart
-
-// function getCart() {
-//   const raw = localStorage.getItem("cart");
-//   try {
-//     return JSON.parse(raw) || [];
-//   } catch {
-//     return [];
-//   }
-// }
-
-// function saveCart(cart) {
-//   localStorage.setItem("cart", JSON.stringify(cart));
-// }
-
-// function updateCartCount() {
-//   const badge = document.getElementById("cartCount");
-//   if (!badge) return;
-
-//   const cart = getCart();
-//   badge.textContent = cart.length; // show the count
-// }
-
-// function addToCart(productId) {
-//   const cart = getCart();
-//   cart.push({ id: productId });
-//   saveCart(cart);
-//   updateCartCount();
-// }
 
 // Fetch and render ONLY the last 5 products
 async function backFiveProducts() {
@@ -946,127 +966,137 @@ document.addEventListener("DOMContentLoaded", () => {
   renderWishlistPage();
 });
 
+//checkout 
+// Attach Buy Now button after product loads
+document.addEventListener("DOMContentLoaded", () => {
+  const buyNowBtn = document.getElementById("buyNowBtn");
 
+  if (buyNowBtn) {
+    buyNowBtn.addEventListener("click", () => {
+      const productId = currentProduct?._id; // ensure you set currentProduct when fetching
+      if (!productId) {
+        alert("⚠️ Product ID not found");
+        return;
+      }
+      buyNow(productId);
+    });
+  }
+});
 
-//proceed to checkout starts
-function goToCheckout() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  if (cart.length === 0) {
-    alert("🛒 Your cart is empty!");
+// Buy Now logic
+function buyNow(productId) {
+  if (!isLoggedIn()) {
+    // Redirect to login
+    window.location.href = "Sign-in.html";
     return;
   }
-  window.location.href = "./Check-out.html";
+
+  fetch(`http://localhost:3000/amazon/document/api/products/${productId}`)
+    .then(res => res.json())
+    .then(product => {
+      if (!product || !product._id) {
+        alert("⚠️ Failed to load product details");
+        return;
+      }
+
+      // Single product checkout cart
+      const checkoutCart = [{
+        id: product._id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        qty: 1
+      }];
+
+      localStorage.setItem("checkoutCart", JSON.stringify(checkoutCart));
+
+      // Go to checkout page
+      window.location.href = "Check-out.html";
+    })
+    .catch(err => console.error("Error in Buy Now:", err));
 }
 
-//checkout 
-async function directCheckout(productId) {
-  try {
-    const response = await fetch(`http://localhost:3000/amazon/document/api/products/${productId}`);
-    if (!response.ok) throw new Error("Failed to fetch product");
 
-    const product = await response.json();
 
-    // Save a temporary "checkout" cart with just this product
-    const checkoutCart = [{
-      id: product._id,
-      name: product.name,
-      price: product.price,
-      image: product.image,
-      qty: 1
-    }];
 
-    localStorage.setItem("checkoutCart", JSON.stringify(checkoutCart));
+//proceed to check out button
 
-    // Redirect straight to checkout page
-  window.location.href = "./Check-out.html";
-
-  } catch (err) {
-    console.error("Error in direct checkout:", err);
+function proceedToCheckout() {
+  if (!isLoggedIn()) {
+    // Redirect to login
+    window.location.href = "Sign-in.html";
+    return;
   }
+
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  if (cart.length === 0) {
+    alert("Your cart is empty.");
+    return;
+  }
+
+  // Save the whole cart for checkout
+  localStorage.setItem("checkoutCart", JSON.stringify(cart));
+
+  // Redirect to checkout page
+  window.location.href = "Check-out.html";
 }
+
+
+
 
 function renderCheckoutSummary() {
-  let checkoutCart = JSON.parse(localStorage.getItem("checkoutCart"));
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  // Get checkoutCart first, else fallback to cart
+  const checkoutCart = JSON.parse(localStorage.getItem("checkoutCart")) || [];
+  let cart = checkoutCart.length > 0 
+    ? checkoutCart 
+    : (JSON.parse(localStorage.getItem("cart")) || []);
 
-  // Use Buy Now checkout if available, else normal cart
-  const items = checkoutCart || cart;
-
-  const itemsContainer = document.getElementById("checkoutItems");
-  const originalEl = document.getElementById("checkoutOriginal");
+  //  HTML elements
+  const originalPriceEl = document.getElementById("checkoutOriginalPrice");
   const savingsEl = document.getElementById("checkoutSavings");
   const shippingEl = document.getElementById("checkoutShipping");
   const taxEl = document.getElementById("checkoutTax");
   const totalEl = document.getElementById("checkoutTotal");
 
-  if (!items || items.length === 0) {
-    itemsContainer.innerHTML = "<p>No items to checkout.</p>";
-    originalEl.textContent = "₦0";
+  if (!cart || cart.length === 0) {
+    originalPriceEl.textContent = "₦0";
+    savingsEl.textContent = "₦0";
+    shippingEl.textContent = "₦0";
+    taxEl.textContent = "₦0";
     totalEl.textContent = "₦0";
     return;
   }
 
-  let originalPrice = 0;
-  let savings = 0;
-  let shipping = 0; // Free shipping here
-  let taxRate = 0.07; // Example 7% VAT
   let total = 0;
+  let originalTotal = 0;
+  let savings = 0;
 
-  itemsContainer.innerHTML = items.map(item => {
-    const itemTotal = item.price * item.qty;
-    originalPrice += itemTotal;
-    return `
-    <div class="d-lg-flex my-5 fw-bold" style="gap: 170px">
-        <p>Item ${index + 1}</p>
-        <div class="d-flex" style="gap: 17px">
-          <u><span onclick="saveForLater('${item.id}')">Save for later</span></u>
-          <u><span onclick="removeFromCart('${item.id}')">Remove</span></u>
-          <p class="fw-bold">
-            Qty: 
-            <button class="mx-0 px-2" style="border: none" onclick="updateQty('${item.id}', -1)">-</button>
-            <button class="mx-1 px-2" style="border: 1px solid #c4d1d0; background-color: #fff">${item.qty}</button>
-            <button class="px-2" style="border: none" onclick="updateQty('${item.id}', 1)">+</button>
-          </p>
-        </div>
-      </div>
-      <hr class="pop-hr3" />
-      <div class="d-flex" style="gap: 10px">
-        <img src="${item.image || './assets/placeholder.png'}" alt="${item.name}" width="80" height="80" />
-        <div class="mt-2">
-          <p class="fw-bold" style="margin-bottom: 1px">${item.name}</p>
-          <small>Cart ID: ${item.id}</small>
-         <p>
-            <span style="text-decoration: line-through; color:gray;">₦${(item.oldPrice || item.price).toLocaleString()}</span>
-            <span class="fw-bold"> ₦${item.price.toLocaleString()}</span>
-            × ${item.qty} = ₦${itemTotal.toLocaleString()}
-          </p>
-        </div>
-      </div>
-    `;
-  }).join("");
+  cart.forEach(item => {
+    const oldPrice = item.oldPrice || (item.price + 500);
+    const itemOriginal = oldPrice * (item.qty || 1);
+    const itemTotal = item.price * (item.qty || 1);
+    const itemSavings = itemOriginal - itemTotal;
 
+    originalTotal += itemOriginal;
+    total += itemTotal;
+    savings += itemSavings;
+  });
 
-  // Example calculations
-  savings = originalPrice * 0.05; // e.g. 5% discount
-  let tax = (originalPrice - savings) * taxRate;
-  total = originalPrice - savings + shipping + tax;
+  // Shipping & tax rules
+  const shipping = total > 5000 ? 0 : 1500;
+  const tax = Math.round(total * 0.05);
+  const finalTotal = total + shipping + tax;
 
-  // Update DOM
-  originalEl.textContent = `₦${originalPrice.toLocaleString()}`;
-  savingsEl.textContent = `₦${savings.toLocaleString()}`;
-  shippingEl.textContent = shipping === 0 ? `<span style="color:green; font-weight:bold;">Free</span>` : `₦${shipping.toLocaleString()}`;
+  // ✅ Update DOM with ₦ formatting
+  originalPriceEl.textContent = `₦${originalTotal.toLocaleString()}`;
+  savingsEl.innerHTML = `<span style="color:green; font-weight:bold;">₦${savings.toLocaleString()}</span>`;
+  shippingEl.innerHTML = shipping === 0 
+    ? `<span style="color:green; font-weight:bold;">Free</span>` 
+    : `₦${shipping.toLocaleString()}`;
   taxEl.textContent = `₦${tax.toLocaleString()}`;
-  totalEl.textContent = `₦${total.toLocaleString()}`;
-    totalItemsEl.textContent = totalItems;
-
+  totalEl.textContent = `₦${finalTotal.toLocaleString()}`;
 }
 
-
-
-
-// Run on page load
-document.addEventListener("DOMContentLoaded", () => {
-  renderCheckoutSummary();
-  localStorage.removeItem("checkoutCart"); // clear one-time checkout
-});
+// Run on checkout page load
+document.addEventListener("DOMContentLoaded", renderCheckoutSummary);
 
